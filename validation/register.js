@@ -8,10 +8,6 @@ module.exports = function validateRegisterInput(data) {
   data.password = validText(data.password) ? data.password : '';
   data.password2 = validText(data.password2) ? data.password2 : '';
 
-  if (Validator.isEmpty(data.handle)) {
-    errors.handle = 'Handle field is required';
-  }
-
   if (Validator.isEmpty(data.username)) {
     errors.username = 'Username field is required';
   }
