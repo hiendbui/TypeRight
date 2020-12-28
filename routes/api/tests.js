@@ -1,0 +1,86 @@
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const passport = require('passport');
+const Test = require('../../models/Test')
+const validateTestInput = require('../../validation/tests');
+
+router.get("/test", (req, res) => res.json({ msg: "This is the tests/test route, apparantly" }));
+
+router.get('/', (req, res) => {
+    Test.find()
+        .sort({ date: -1 })
+        .then(tests => res.json(tests))
+        .catch(err => res.status(404).json({ notestsfound: 'No tests found' }));
+});
+
+router.get('/user/:user_id', (req, res) => {
+    Test.find({uploader: req.params.user_id})
+        .then(tests => res.json(tests))
+        .catch(err =>
+            res.status(404).json({ notestsfound: 'No tests found from that user' }
+        )
+    );
+});
+
+router.get('/:id', (req, res) => {
+    Test.findById(req.params.id)
+        .then(test => res.json(test))
+        .catch(err =>
+            res.status(404).json({ notestsfound: 'No test found with that ID' })
+        );
+});
+
+router.post('/',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+      const { errors, isValid } = validateTestInput(req.body);
+  
+      if (!isValid) {
+        return res.status(400).json(errors);
+      }
+  
+      const newTest = new Test({
+        title: req.body.title,
+        content: req.body.content,
+        uploader: req.user.id
+      });
+  
+      newTest.save().then(test => res.json(test));
+    }
+);
+
+router.delete('/:id',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+
+        Test.deleteOne({_id: req.params.id})
+            .then(() => {
+                res.status(200).json({ message: 'Deleted!' });
+            })
+            .catch(error => {
+                res.status(400).json({ error });
+            });
+});
+
+router.patch('/:id',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        const { errors, isValid } = validateTestInput(req.body);
+    
+        if (!isValid) {
+            return res.status(400).json(errors);
+        }
+
+        Test.findById(req.params.id)
+            .then(test => {
+                test.title = req.body.title;
+                test.content = req.body.content;
+                test.save().then(test => res.json(test));
+            })
+            .catch(err =>
+                res.status(404).json({ notestsfound: 'No test found with that ID' })
+            )
+});
+
+module.exports = router;

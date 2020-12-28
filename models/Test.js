@@ -17,3 +17,5 @@ const TestSchema = new Schema({
     }, {
     timestamps: true
 });
+
+module.exports = Test = mongoose.model('tests', TestSchema);
