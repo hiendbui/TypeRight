@@ -18,7 +18,11 @@ const AttemptSchema = new Schema({
         type: Number,
         required: true
     },
-    errors: {
+    typos: {
+        type: Number,
+        required: true
+    },
+    placeholder: {
         type: Number,
         required: true
     }
@@ -26,4 +30,4 @@ const AttemptSchema = new Schema({
     timestamps: true
 });
 
-module.exports = Test = mongoose.model('tests', TestSchema);
+module.exports = Attempt = mongoose.model('attempts', AttemptSchema);
