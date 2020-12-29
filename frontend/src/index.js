@@ -1,11 +1,13 @@
+import "./assets/styles/reset.scss"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
-import * as testActions from "./actions/test_actions"
-import * as TestAPIUtil from './util/test_api_util'
-import * as sessionAPIUtil from './util/session_api_util'
+import * as testActions from "./actions/test_actions";
+import * as TestAPIUtil from './util/test_api_util';
+import * as sessionAPIUtil from './util/session_api_util';
+import "./main.scss";
 
 
 import { setAuthToken } from './util/session_api_util';

@@ -1,15 +1,15 @@
 export const arrayToObj = array => {
     const newObj = {}
     array.forEach(el =>(
-        newObj[el.id] = el
+        newObj[el._id] = el
     ))
     return newObj
 }
 
-export const objToArray = obj => {
-    return Object.values(obj)
-}
+// export const objToArray = obj => {
+//     return Object.values(obj)
+// }
 
 export const arrayOfIds = elements => {
-    return elements.map(ele => ele.id)
+    return elements.map(ele => ele._id)
 }

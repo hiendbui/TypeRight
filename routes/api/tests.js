@@ -63,7 +63,7 @@ router.delete('/:id',
 
         Test.deleteOne({_id: req.params.id})
             .then(() => {
-                res.status(200).json({ message: 'Deleted!' });
+                res.json({ id: req.params.id, message: 'Deleted!' });
             })
             .catch(error => {
                 res.status(400).json({ error });

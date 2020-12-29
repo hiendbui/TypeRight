@@ -23,10 +23,6 @@
         background:#413E3E
     }
 
-    form input#password {
-        margin-bottom: 20px;
-    }
-
     form label {
         margin: 15px 0px 0px 0px;
 
@@ -34,6 +30,9 @@
             margin: 10px 0px 10px 5px;
             color: white;
         }
+    }
+    .text-input-section{
+        margin-bottom: 20px;
     }
 
     .sessionbutton {
