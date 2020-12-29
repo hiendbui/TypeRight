@@ -6,7 +6,7 @@ import {
     logout,
     login,
     signup,
-    clearErrors } from '../../actions/session_actions'
+    clearSessionErrors } from '../../actions/session_actions'
 
 import NavBar from './navbar';
 
@@ -14,7 +14,14 @@ const mapStateToProps = state => ({
   loggedIn: state.session.isAuthenticated
 });
 
+const mapDispatchToProps = dispatch => ({
+  signup: user => dispatch(signup(user)),
+  login: user => dispatch(login(user)),
+  logout: () => dispatch(logout()),
+  clearSessionErrors: () => dispatch(clearSessionErrors()),
+  openModal: modal => dispatch(openModal(modal))
+})
 export default connect(
   mapStateToProps,
-  { logout },
+  mapDispatchToProps
 )(NavBar);
