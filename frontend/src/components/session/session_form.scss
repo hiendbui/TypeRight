@@ -1,0 +1,111 @@
+.session-form {
+    background:#413E3E;
+    padding: 20px 10px 20px;
+    border-radius: 15px;
+    width: 400px;
+    color: white;
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form input:focus {
+        border: 2px solid #008080;
+        background: white;
+    }
+
+    form input {
+        width: 380px;
+        height: 24px;
+        padding-left: 10px;
+        border-radius: 10px;
+        background:#413E3E
+    }
+
+    form input#password {
+        margin-bottom: 20px;
+    }
+
+    form label {
+        margin: 15px 0px 0px 0px;
+
+        h4 {
+            margin: 10px 0px 10px 5px;
+            color: white;
+        }
+    }
+
+    .sessionbutton {
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 6px 8px;
+        border-radius: 15px;
+        margin: 5px 5px 5px 0;
+        background:  #008080;
+        color: white;
+    }
+
+    .sessionbutton:hover {
+        background: #004040;
+        color: white;
+        cursor:pointer;
+    }
+
+    .modalHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 32px;
+            height: 32px;
+            padding: 8px;
+        }
+    }
+
+    .link-to-other {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-bottom: 1px solid lightgray;
+
+        #modalForm {
+            display: flex;
+            justify-self: start;
+        }
+        button{
+            background-color: #413E3E;
+            border: none;
+            color: white;
+        }
+    }
+
+    #selected-form {
+        color:#008080;
+        border-bottom: 2px solid #008080;
+        border-radius: 0px;
+        margin-right: 10px;
+    }
+
+    #selected-form-two {
+        color: #008080;
+        border-bottom: 2px solid #008080;
+        border-radius: 0px;
+        margin-left: 10px;
+    }
+
+    .session-errors {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 6px 0px 0px;
+        padding: 5px;
+        border: 1px solid rgb(255, 0, 0);
+        border-left: 4px solid red;
+        border-radius: 6px;
+        background: rgba(255, 221, 221, 0.3);
+        font-weight: bold;
+    }
+}
