@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode';
 import * as testActions from "./actions/test_actions";
 import * as TestAPIUtil from './util/test_api_util';
 import * as sessionAPIUtil from './util/session_api_util';
+import * as AttemptAPIUtil from './util/attempt_api_util';
 import "./main.scss";
 
 
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.testActions = testActions;
   window.testUtil = TestAPIUtil;
   window.sessionUtil = sessionAPIUtil;
+  window.attemptUtil = AttemptAPIUtil;
   // REMEMBER TO REMOVE THIS TESTING STUFF
 
   const root = document.getElementById('root');

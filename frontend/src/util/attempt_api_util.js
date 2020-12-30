@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const createAttempt = attempt => {
-    return axios.post('api/attempts', attempt)
+    return axios.post('api/attempts/', attempt)
 };
 
 export const fetchUserAttempts = userId => {
