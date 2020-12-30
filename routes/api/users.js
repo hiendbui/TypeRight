@@ -11,7 +11,16 @@ const validateLoginInput = require('../../validation/login');
 
 router.get("/", (req, res) => {
     User.find({})
-       .then(users => console.log(res.json(users)))
+       .then(users => 
+            res.json(
+                users.map((user) => (
+                    {
+                        id: user.id, 
+                        username: user.username
+                    }
+                ))
+            )
+        )
        .catch(err => res.status(404).json({ fail: 'Get request failed' }));
 });
 
