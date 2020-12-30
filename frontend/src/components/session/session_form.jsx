@@ -64,33 +64,35 @@ class SessionForm extends React.Component {
         </div>
         <form onSubmit={this.handleSubmit}>
           {this.displayErrors()}
-          <label>
-            <h4>Username</h4>
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.handleInput("username")}
-              />
-          </label>
-          <label>
-            <h4>Password</h4>
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.handleInput("password")}
-              id="password"
-              />
-          </label>
-              {this.props.formType === "Sign Up" ? (
-                <label>
-                  <h4>Password Confirmation</h4>
-                  <input
-                    type="password"
-                    value={this.state.password2}
-                    onChange={this.handleInput("password2")}
-                  />
-                </label>
-              ) : null}
+          <div className="text-input-section">
+            <label>
+              <h4>Username</h4>
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={this.handleInput("username")}
+                />
+            </label>
+            <label>
+              <h4>Password</h4>
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.handleInput("password")}
+                id="password"
+                />
+            </label>
+                {this.props.formType === "Sign Up" ? (
+                  <label>
+                    <h4>Password Confirmation</h4>
+                    <input
+                      type="password"
+                      value={this.state.password2}
+                      onChange={this.handleInput("password2")}
+                    />
+                  </label>
+                ) : null}
+          </div>
           <button className="sessionbutton">{this.props.formType}</button>
           <button onClick={this.handleDemoUser} className="sessionbutton">
             Demo User

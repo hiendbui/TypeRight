@@ -7,12 +7,14 @@ import Modal from "./session/modal";
 import MainPage from './main/main_page';
 
 const App = () => (
-  <div>
+  <div className="app">
     <NavBarContainer />
     <Modal />
-    <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
-    </Switch>
+    <div className="app-inner">
+      <Switch>
+        <AuthRoute exact path="/" component={MainPage} />
+      </Switch>
+    </div>
   </div>
 );
 

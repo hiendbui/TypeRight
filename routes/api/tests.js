@@ -5,11 +5,10 @@ const passport = require('passport');
 const Test = require('../../models/Test')
 const validateTestInput = require('../../validation/tests');
 
-router.get("/test", (req, res) => res.json({ msg: "This is the tests/test route, apparantly" }));
-
 router.get('/', (req, res) => {
     Test.find()
         .sort({ date: -1 })
+        .limit(10)
         .then(tests => res.json(tests))
         .catch(err => res.status(404).json({ notestsfound: 'No tests found' }));
 });
@@ -21,6 +20,14 @@ router.get('/user/:user_id', (req, res) => {
             res.status(404).json({ notestsfound: 'No tests found from that user' }
         )
     );
+});
+
+router.get('/random', (req, res) => {
+    Test.aggregate([{ $sample: {size: 1}}])
+        .then(test => res.json(test))
+        .catch(err =>
+            res.status(404).json({ notestsfound: 'No random sample test found' })
+        );
 });
 
 router.get('/:id', (req, res) => {
@@ -56,7 +63,7 @@ router.delete('/:id',
 
         Test.deleteOne({_id: req.params.id})
             .then(() => {
-                res.status(200).json({ message: 'Deleted!' });
+                res.json({ id: req.params.id, message: 'Deleted!' });
             })
             .catch(error => {
                 res.status(400).json({ error });

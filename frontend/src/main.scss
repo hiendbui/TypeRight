@@ -1,0 +1,24 @@
+$base-color: #413E3E;
+$inner-bg-color: #656060;
+
+body{
+    background-color: $base-color;
+    color: white;
+    font-family: 'Montserrat';
+}
+button, input{
+    all: unset;
+}
+
+.app-inner{
+    padding-top: 50px;
+}
+.page-card{
+    background-color: $inner-bg-color;
+    margin: 12px 10%;
+    border-radius: 5px;
+    padding: 24px 48px;
+}
+h1, h2, h3 {
+    text-align: center;
+}
