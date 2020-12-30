@@ -4,9 +4,18 @@ const express = require("express");
 const app = express();
 const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users");
-const tests = require("./routes/api/tests")
+const tests = require("./routes/api/tests");
+const attempts = require("./routes/api/attempts");
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const path = require('path');
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -16,8 +25,10 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
+  
 app.use("/api/users", users);
-app.use("/api/tests", tests)
+app.use("/api/tests", tests);
+app.use("/api/attempts", attempts);
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
