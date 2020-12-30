@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TestItem from './test_item'
+import './library.scss'
 
 export default class Library extends Component {
     constructor(props){
@@ -11,9 +12,9 @@ export default class Library extends Component {
     render() {
         if (!this.props.tests.latest) return null;
         return (
-            <div>
+            <div className="library-container">
                 <h3>Explore Our Latest Test Submissions</h3>
-                <div className="library-container page-card">
+                <div className="page-card library">
                     {this.props.tests.latest.map(testId => (
                         <TestItem test={this.props.tests[testId]} />
                     ))}

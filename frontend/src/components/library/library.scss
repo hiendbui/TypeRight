@@ -1,0 +1,64 @@
+@import "../../assets/styles/colors.scss";
+
+.library-container{
+    margin-top: 24px;
+}
+.library{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+//library test item css
+.test-item-container{
+    cursor: pointer;
+    width: 18%;
+    min-width: 180px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 6px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.01), $base-color);
+    padding-top: 24px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    transition: top ease 0.5s;
+}
+.test-item-container:hover{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), $base-color);
+    top: -2px;
+}
+
+.test-item-preview{
+    background: grey;
+    margin: 0 24px;
+    padding: 12px;
+    height: 100%;
+    font-size: 12px;
+    line-height: 14px;
+    position: relative;
+    transition: top ease 0.5s;
+    top: 0;
+
+}
+.test-item-container:hover .test-item-preview{
+    top: -12px;
+}
+
+.test-item-title{
+    background: $base-color;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    position: absolute;
+    border-radius: 0 0 10px 10px;
+    bottom: 0;
+    width: 100%;
+    // background: rgb(0, 74, 74);
+}
+// .test-item-container:hover .test-item-title{
+//     color: #008080;
+// }
