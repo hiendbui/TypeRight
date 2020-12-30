@@ -7,4 +7,13 @@
     position: fixed;
     width: 100%;
     background-color: $base-color;
+    padding: 0 24px;
+    box-sizing: border-box;
+    h1{
+        margin-right: auto;
+    }
+    .navRight > * {
+        padding-right: 24px;
+        cursor: pointer;
+    }
 }

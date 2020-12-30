@@ -6,7 +6,7 @@ body{
     color: white;
     font-family: 'Montserrat';
 }
-button{
+button, input{
     all: unset;
 }
 
@@ -15,9 +15,9 @@ button{
 }
 .page-card{
     background-color: $inner-bg-color;
-    margin: 0 10%;
-    border-radius: 10px;
-    padding: 24px 10%;
+    margin: 12px 10%;
+    border-radius: 5px;
+    padding: 24px 48px;
 }
 h1, h2, h3 {
     text-align: center;
