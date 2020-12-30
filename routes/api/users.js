@@ -9,7 +9,11 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+router.get("/", (req, res) => {
+    User.find({})
+       .then(users => console.log(res.json(users)))
+       .catch(err => res.status(404).json({ fail: 'Get request failed' }));
+});
 
 router.get(
     "/current",
