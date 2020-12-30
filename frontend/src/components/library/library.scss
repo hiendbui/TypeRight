@@ -31,6 +31,11 @@
     background-image: linear-gradient(rgba(255, 255, 255, 0.05), $base-color);
     top: -2px;
 }
+.filling-empty-space-childs {
+    width: 18%;
+    min-width: 180px;
+    height: 0; 
+}
 
 .test-item-preview{
     background: grey;
@@ -46,6 +51,9 @@
 }
 .test-item-container:hover .test-item-preview{
     top: -12px;
+}
+.test-item-container:focus .test-item-preview{
+    top: -24px;
 }
 
 .test-item-title{
