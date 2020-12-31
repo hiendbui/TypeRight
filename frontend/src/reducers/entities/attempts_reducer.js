@@ -1,7 +1,7 @@
 import {
     RECEIVE_ATTEMPTS, 
     RECEIVE_SINGLE_ATTEMPT
-} from '../actions/attempt_actions';
+} from '../../actions/attempt_actions';
 
 const initialState = {}
 

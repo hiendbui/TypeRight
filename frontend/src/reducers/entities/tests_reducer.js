@@ -1,8 +1,8 @@
 import { RECEIVE_LATEST_TESTS, 
          RECEIVE_TEST,
          REMOVE_TEST
-} from '../actions/test_actions';
-import { arrayToObj, arrayOfIds } from './selectors';
+} from '../../actions/test_actions';
+import { arrayToObj, arrayOfIds } from '../selectors';
 
 const initialState = {}
 
