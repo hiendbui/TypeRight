@@ -2,7 +2,7 @@
 import React from 'react';
 import TypeContainer from '../typing/typing_container';
 import LibraryContainer from '../library/library_container';
-// import NewTest from "./addTest"
+import CreateTest from "./create_test"
 class MainPage extends React.Component {
 
   render() {
@@ -10,7 +10,7 @@ class MainPage extends React.Component {
       <div>
         <TypeContainer/>
         <LibraryContainer/>
-        {/* <NewTest/> */}
+        <CreateTest/>
         <footer>
           Created by Anthony Bologna, Hien Bui, Josh Bubar, and Lawrence Nguyen &copy; 2020
         </footer>
