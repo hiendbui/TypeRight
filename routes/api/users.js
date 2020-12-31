@@ -9,7 +9,24 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+router.get("/", (req, res) => {
+    User.find({})
+       .then(users => {
+            const newObj = {}
+       
+            users.map((user) => (
+                {
+                    id: user.id, 
+                    username: user.username
+                }
+                )).forEach((user) => newObj[user.id] = user)
+            
+            return res.json(newObj)
+            
+        }
+        )
+       .catch(err => res.status(404).json({ fail: 'Get request failed' }));
+});
 
 router.get(
     "/current",

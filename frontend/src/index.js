@@ -7,6 +7,8 @@ import jwt_decode from 'jwt-decode';
 import * as testActions from "./actions/test_actions";
 import * as TestAPIUtil from './util/test_api_util';
 import * as sessionAPIUtil from './util/session_api_util';
+import {createAttempt, fetchUserAttempts, fetchTestAttempts, fetchUserTestAttempts} from './actions/attempt_actions';
+import {fetchAllUsers} from './actions/user_actions'
 import "./main.scss";
 
 
@@ -37,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.testActions = testActions;
   window.testUtil = TestAPIUtil;
   window.sessionUtil = sessionAPIUtil;
+  window.createAttempt = createAttempt;
+  window.fetchUserAttempts = fetchUserAttempts;
+  window.fetchTestAttempts = fetchTestAttempts;
+  window.fetchUserTestAttempts = fetchUserTestAttempts;
+  window.fetchAllUsers = fetchAllUsers;
   // REMEMBER TO REMOVE THIS TESTING STUFF
 
   const root = document.getElementById('root');
