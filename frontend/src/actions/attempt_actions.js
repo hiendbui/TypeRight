@@ -9,8 +9,8 @@ const receiveAttempts = attempts => ({
 });
 
 const receiveSingleAttempt = attempt => ({
-    type: RECEIVE_ATTEMPT,
-    test
+    type: RECEIVE_SINGLE_ATTEMPT,
+    attempt
 });
 
 
