@@ -30,19 +30,31 @@ router.post('/',
 
 router.get('/users/:user', (req, res) => {
     Attempt.find({ user : req.params.user })
-    .then(attempts => res.json(attempts))
+    .then(attempts => {
+        const newObj = {}
+        attempts.forEach((attempt) => newObj[attempt.id] = attempt)
+        return res.json(newObj)
+    })
         .catch(err => res.status(404).json({ usernotfound: 'No such user' }));
     })
     
 router.get('/tests/:test', (req, res) => {
     Attempt.find({ test : req.params.test })
-    .then(attempts => res.json(attempts))
+    .then(attempts => {
+        const newObj = {}
+        attempts.forEach((attempt) => newObj[attempt.id] = attempt)
+        return res.json(newObj)
+    })
     .catch(err => res.status(404).json({ testnotfound: 'No such test' }));
 })
 
 router.get('/:user/:test', (req, res) => {
     Attempt.find( { $and: [ { user : req.params.user }, { test : req.params.test } ]})
-        .then(attempts => res.json(attempts))
+        .then(attempts => {
+        const newObj = {}
+        attempts.forEach((attempt) => newObj[attempt.id] = attempt)
+        return res.json(newObj)
+    })
         .catch(err => res.status(404).json({ errs: 'No such user or test' }));
 })
 module.exports = router;
