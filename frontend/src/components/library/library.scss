@@ -62,7 +62,7 @@
 
 .test-item-title{
     // background: $base-color;
-    background-image: linear-gradient(rgb(13, 37, 37), #133837);
+    background-image: linear-gradient(rgb(13, 37, 37), $base-color);
     height: 84px;
     line-height: 84px;
     text-align: center;
