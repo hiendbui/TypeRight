@@ -14,6 +14,7 @@ router.post('/',
             typos: req.body.typos,
             user: req.body.user,
             test: req.body.test,
+            accuracy: req.body.accuracy,
             placeholder: req.body.placeholder
         });
         
