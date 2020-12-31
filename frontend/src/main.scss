@@ -1,9 +1,8 @@
-$base-color: #413E3E;
-$inner-bg-color: #656060;
+@import "./assets/styles/colors.scss";
 
 body{
     background-color: $base-color;
-    color: white;
+    color: $main-text;
     font-family: 'Montserrat';
 }
 button, input{
@@ -21,4 +20,11 @@ button, input{
 }
 h1, h2, h3 {
     text-align: center;
+}
+h3{
+    font-size: 19px;
+}
+a{
+    all: unset;
+    color: $main-text;
 }

@@ -1,8 +1,8 @@
 @import "../../assets/styles/colors.scss";
 
 .session-form {
-    background:#413E3E;
-    padding: 20px 10px 20px;
+    background:$base-color;
+    padding: 24px 36px;
     border-radius: 15px;
     width: 400px;
     color: white;
@@ -13,13 +13,15 @@
     }
 
     form input:focus {
-        border: 2px solid #008080;
-        background: rgb(143, 140, 140);
+        border: 2px solid $triadic-2;
+        background: $main-accent;
     }
 
     form input {
-        width: 380px;
-        height: 24px;
+        width: 100%;
+        box-sizing: border-box;
+        height: 28px;
+        line-height: 28px;
         padding-left: 10px;
         border-radius: 10px;
         background: $inner-bg-color;
@@ -30,22 +32,33 @@
         margin: 15px 0px 0px 0px;
 
         h4 {
-            margin: 10px 0px 10px 5px;
+            margin: 24px 0px 8px 5px;
             color: white;
         }
     }
     .text-input-section{
         margin-bottom: 20px;
     }
-
+    .session-buttons-container{
+        display: flex;
+        justify-content: space-between;
+    }
     .sessionbutton {
         text-decoration: none;
         font-size: 1rem;
         padding: 6px 8px;
-        border-radius: 15px;
-        margin: 5px 5px 5px 0;
-        background:  #008080;
+        border-radius: 10px;
+        margin: 6px 0;
+         background: $inner-bg-color;
+
+        // background:  $triadic-2;
         color: white;
+        text-align: center;
+        width: 40%;
+        min-width: 90px;
+    }
+    .demo-user-btn{
+         background: $inner-bg-color;
     }
 
     .sessionbutton:hover {
@@ -70,31 +83,39 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        border-bottom: 1px solid lightgray;
 
         #modalForm {
             display: flex;
             justify-self: start;
+            width: 100%;
         }
         button{
-            background-color: #413E3E;
             border: none;
             color: white;
         }
     }
-
-    #selected-form {
-        color:#008080;
-        border-bottom: 2px solid #008080;
-        border-radius: 0px;
-        margin-right: 10px;
+    #modalForm button{
+        height: 24px;
+        line-height: 24px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid $light-main;
+    }
+    .spacer{
+        height: 30px;
+        width: 12px;
+        border-bottom: 1px solid $light-main;
+    }
+    .spacer-fill-right{
+        height: 30px;
+        flex: 1;
+        border-bottom: 1px solid $light-main; 
     }
 
-    #selected-form-two {
-        color: #008080;
-        border-bottom: 2px solid #008080;
-        border-radius: 0px;
-        margin-left: 10px;
+    button#selected-form, button#selected-form-two {
+        // color: $inner-bg-color;
+        border-bottom: 3px solid $triadic-2;
+        padding-bottom: 5px;
+
     }
 
     .session-errors {
@@ -104,10 +125,13 @@
         align-items: center;
         margin: 20px 6px 0px 0px;
         padding: 5px;
-        border: 1px solid rgb(255, 0, 0);
-        border-left: 4px solid red;
-        border-radius: 6px;
-        background: rgba(255, 221, 221, 0.3);
+        border-top: 1px solid lightcoral;
+        border-bottom: 1px solid lightcoral;
+        // border-radius: 6px;
+        background: rgba(255, 0, 0, 0.2);
         font-weight: bold;
+        color: lightcoral;
+        line-height: 21px;
+        font-size: 15px;
     }
 }

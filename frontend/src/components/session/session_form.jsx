@@ -53,12 +53,15 @@ class SessionForm extends React.Component {
           {this.props.formType === "Log In" ? (
             <div id="modalForm">
               <button id="selected-form">{this.props.formType}</button>
+              <span className="spacer"/>
               <p>{this.props.otherForm}</p>
+              <span className="spacer-fill-right"/>
             </div>
           ) : (
             <div id="modalForm">
-              <p>{this.props.otherForm}</p>
+              <p>{this.props.otherForm}</p><span className="spacer"/>
               <button id="selected-form-two">{this.props.formType}</button>
+              <span className="spacer-fill-right"/>
             </div>
           )}
         </div>
@@ -93,10 +96,12 @@ class SessionForm extends React.Component {
                   </label>
                 ) : null}
           </div>
-          <button className="sessionbutton">{this.props.formType}</button>
-          <button onClick={this.handleDemoUser} className="sessionbutton">
-            Demo User
-          </button>
+          <div className="session-buttons-container">
+            <button onClick={this.handleDemoUser} className="sessionbutton">
+              Demo User
+            </button>
+            <button className="sessionbutton">{this.props.formType}</button>
+          </div>
         </form>
       </div>
     );

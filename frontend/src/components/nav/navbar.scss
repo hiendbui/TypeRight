@@ -9,11 +9,17 @@
     background-color: $base-color;
     padding: 0 24px;
     box-sizing: border-box;
+    z-index: 2;
     h1{
         margin-right: auto;
+        font-size: 19px;
     }
     .navRight > * {
         padding-right: 24px;
         cursor: pointer;
+    }
+    .navRight > *:hover {
+        color: $triadic-2;
+
     }
 }
