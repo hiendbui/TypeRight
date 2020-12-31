@@ -5,6 +5,8 @@ import { fetchTest } from '../../actions/test_actions';
 
 const msp = state => ({
     currentUser: state.session.user,
+    attempts: state.entities.attempts,
+    tests: state.entities.tests,
     header: 'Your Overall Stats'
 })
 
