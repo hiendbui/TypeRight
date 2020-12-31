@@ -16,7 +16,7 @@ export default class Library extends Component {
                 <h3>Explore Our Latest Test Submissions</h3>
                 <div className="page-card library">
                     {this.props.tests.latest.map(testId => (
-                        <TestItem test={this.props.tests[testId]} />
+                        <TestItem key={testId} test={this.props.tests[testId]} />
                     ))}
                     <div className="filling-empty-space-childs"></div>
                     <div className="filling-empty-space-childs"></div>
