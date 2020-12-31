@@ -19,7 +19,7 @@
     flex-direction: column;
     border-radius: 10px;
     margin: 6px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.01), $base-color);
+    background-image: linear-gradient($faded-complimentary, $base-color);
     padding-top: 24px;
     box-sizing: border-box;
     position: relative;
