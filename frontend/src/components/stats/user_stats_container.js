@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Stats from './stats';
+import UserStats from './user_stats';
 import { fetchUserAttempts } from '../../actions/attempt_actions';
 import { fetchTest } from '../../actions/test_actions';
 
@@ -16,5 +16,5 @@ const mdp = dispatch => ({
     fetchTest: id => dispatch(fetchTest(id)),
 })
 
-const UserStatsContainer = connect(msp,mdp)(Stats);
+const UserStatsContainer = connect(msp,mdp)(UserStats);
 export default UserStatsContainer;

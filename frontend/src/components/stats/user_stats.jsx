@@ -1,6 +1,6 @@
 import React from 'react';
 import {AreaChart,  Area, CartesianGrid, XAxis, YAxis, Label } from 'recharts';
-export default class Stats extends React.Component {
+export default class UserStats extends React.Component {
     componentDidMount() {
         this.props.fetchAttempts(this.props.currentUser.id, this.props.currentTest)
             .then(() => {
