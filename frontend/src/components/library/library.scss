@@ -39,7 +39,7 @@
 }
 
 .test-item-preview{
-    background: $fourth-background;
+    background: $accent-three;
     margin: 0 24px;
     padding: 12px;
     height: 100%;
@@ -61,7 +61,8 @@
 }
 
 .test-item-title{
-    background: $fifth-background;
+    background: $fourth-background;
+    border-top: 1px solid $fifth-background;
     height: 84px;
     line-height: 84px;
     text-align: center;
@@ -75,7 +76,7 @@
 transition: background-image 0.5s ease-in-out;
 
 }
-.test-item-container:hover .test-item-title{
+// .test-item-container:hover .test-item-title{
     // background: $triadic-1;
-    background: $fifth-background;
-}
+    // background: $fifth-background;
+// }
