@@ -11,7 +11,7 @@ export default class typing extends Component {
             wordIdx: 0,
         }
 
-        this.skipCodes = [16, 17, 18, 20, 9, 27, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 44, 46, 33, 34, 35, 36, 37, 38, 39, 40];
+        this.skipCodes = [16, 17, 18, 20, 9, 27, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 44, 46, 33, 34, 35, 36, 37, 38, 39, 40, 224];
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
@@ -19,7 +19,7 @@ export default class typing extends Component {
         this.props.fetchRandomTest()
             .then(() => this.setState({
                 wordObjs: this.props.test.content.split(' ').map(word => ({
-                    error: false,
+                    complete: false,
                     letterObjs: word.split('').map(letter => ({
                         letter,
                         complete: false,
@@ -35,7 +35,11 @@ export default class typing extends Component {
 
         } else if ( e.keyCode === 32 ) {
             if (this.state.letterIdx !== 0) {
+                const newWords = this.state.wordObjs.splice(0);
+                newWords[this.state.wordIdx].complete = true;
+                
                 this.setState({
+                    wordObjs: newWords,
                     letterIdx: 0,
                     wordIdx: this.state.wordIdx + 1,
                 })
@@ -86,7 +90,7 @@ export default class typing extends Component {
             <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabindex="-1" >
                 {this.state.wordObjs.map( (wordObj, idx) => 
                     <span
-                        className={wordObj.error ? 'word error' : 'word'}
+                        className={!wordObj.complete || wordObj.letterObjs.every(letterObj => letterObj.correct) ? 'word' : 'word error'}
                         key={idx}
                     >
                         {wordObj.letterObjs.map((letterObj, idx) => (
