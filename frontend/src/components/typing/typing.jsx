@@ -1,28 +1,107 @@
 import React, {Component} from 'react';
-import WordItem from './word_item';
+// import WordItem from './word_item';
 
 export default class typing extends Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            wordObjs: null,
+            letterIdx: 0,
+            wordIdx: 0,
+        }
+
+        this.skipCodes = [16, 17, 18, 20, 9, 27, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 44, 46, 33, 34, 35, 36, 37, 38, 39, 40];
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchRandomTest()
+            .then(() => this.setState({
+                wordObjs: this.props.test.content.split(' ').map(word => ({
+                    error: false,
+                    letterObjs: word.split('').map(letter => ({
+                        letter,
+                        complete: false,
+                        correct: null
+                    }))
+                }))
+            }));
     }
 
     handleKeyPress(e){
-        console.log(e.key);
+        e.preventDefault();
+        if (this.skipCodes.includes(e.keyCode)) {
+
+        } else if ( e.keyCode === 32 ) {
+            if (this.state.letterIdx !== 0) {
+                this.setState({
+                    letterIdx: 0,
+                    wordIdx: this.state.wordIdx + 1,
+                })
+            }
+        } else if (this.state.letterIdx >= this.state.wordObjs[this.state.wordIdx].letterObjs.length) {
+            const newWords = this.state.wordObjs.splice(0);
+            newWords[this.state.wordIdx].letterObjs.push({
+                letter: e.key,
+                complete: true,
+                correct: false,
+                extra: true
+            })
+            this.setState({
+                letterIdx: this.state.letterIdx + 1,
+                wordObjs: newWords,
+            })
+        } else if (e.key === this.state.wordObjs[this.state.wordIdx].letterObjs[this.state.letterIdx].letter) {
+            const newWords = this.state.wordObjs.splice(0);
+            Object.assign(newWords[this.state.wordIdx].letterObjs[this.state.letterIdx],
+                {
+                    complete: true,
+                    correct: true
+                });
+
+            this.setState({
+                letterIdx: this.state.letterIdx + 1,
+                wordObjs: newWords,
+            })
+        } else if (e.key !== this.state.wordObjs[this.state.wordIdx].letterObjs[this.state.letterIdx].letter) {
+            const newWords = this.state.wordObjs.splice(0);
+            Object.assign(newWords[this.state.wordIdx].letterObjs[this.state.letterIdx],
+                {
+                    complete: true,
+                    correct: false
+                });
+
+            this.setState({
+                letterIdx: this.state.letterIdx + 1,
+                wordObjs: newWords,
+            })
+        }
     }
 
     render() {
-        if(!this.props.test) return null;
-
-        let words = this.props.test.content.split(' ');
+        if(!this.state.wordObjs) return null;
 
         return (
-            <div className="type-container page-card" onKeyPress={this.handleKeyPress} tabindex="-1" >
-                {words.map( (word, idx) => 
-                    <WordItem word={word} key={idx} />
+            <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabindex="-1" >
+                {this.state.wordObjs.map( (wordObj, idx) => 
+                    <span
+                        className={wordObj.error ? 'word error' : 'word'}
+                        key={idx}
+                    >
+                        {wordObj.letterObjs.map((letterObj, idx) => (
+                            <span
+                                key={idx}
+                                className={letterObj.complete ? (
+                                    letterObj.extra ? 'letter incorrect extra' : 
+                                        (letterObj.correct ? 'letter correct' : 'letter incorrect')
+                                    ) : 'letter'
+                                }
+                            >
+                                {letterObj.letter}
+                            </span>
+                        ))}
+                    </span>
                 )}
             </div>
         )
