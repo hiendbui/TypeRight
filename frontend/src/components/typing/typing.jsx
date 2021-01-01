@@ -30,10 +30,10 @@ export default class typing extends Component {
     }
 
     handleKeyPress(e){
-        e.preventDefault();
-        if (this.skipCodes.includes(e.keyCode)) {
+        if (e.ctrlKey || e.metaKey || e.altKey || this.skipCodes.includes(e.keyCode)) {
 
         } else if ( e.keyCode === 32 ) {
+            e.preventDefault();
             if (this.state.letterIdx !== 0) {
                 const newWords = this.state.wordObjs.splice(0);
                 newWords[this.state.wordIdx].complete = true;
@@ -45,18 +45,20 @@ export default class typing extends Component {
                 })
             }
         } else if (this.state.letterIdx >= this.state.wordObjs[this.state.wordIdx].letterObjs.length) {
+            e.preventDefault();
             const newWords = this.state.wordObjs.splice(0);
             newWords[this.state.wordIdx].letterObjs.push({
                 letter: e.key,
                 complete: true,
                 correct: false,
-                extra: true
+                extra: true,
             })
             this.setState({
                 letterIdx: this.state.letterIdx + 1,
                 wordObjs: newWords,
             })
         } else if (e.key === this.state.wordObjs[this.state.wordIdx].letterObjs[this.state.letterIdx].letter) {
+            e.preventDefault();
             const newWords = this.state.wordObjs.splice(0);
             Object.assign(newWords[this.state.wordIdx].letterObjs[this.state.letterIdx],
                 {
@@ -69,6 +71,7 @@ export default class typing extends Component {
                 wordObjs: newWords,
             })
         } else if (e.key !== this.state.wordObjs[this.state.wordIdx].letterObjs[this.state.letterIdx].letter) {
+            e.preventDefault();
             const newWords = this.state.wordObjs.splice(0);
             Object.assign(newWords[this.state.wordIdx].letterObjs[this.state.letterIdx],
                 {
