@@ -97,10 +97,10 @@ class SessionForm extends React.Component {
                 ) : null}
           </div>
           <div className="session-buttons-container">
-            <button onClick={this.handleDemoUser} className="sessionbutton">
+            <button type="button" onClick={this.handleDemoUser} className="sessionbutton">
               Demo User
             </button>
-            <button className="sessionbutton">{this.props.formType}</button>
+            <button type="submit" className="sessionbutton">{this.props.formType}</button>
           </div>
         </form>
       </div>
