@@ -29,60 +29,76 @@ export default class typing extends Component {
             }));
     }
 
+    keySpace(e) {
+        e.preventDefault();
+        if (this.state.letterIdx !== 0) {
+            const newWords = this.state.wordObjs.splice(0);
+            newWords[this.state.wordIdx].complete = true;
+
+            this.setState({
+                wordObjs: newWords,
+                letterIdx: 0,
+                wordIdx: this.state.wordIdx + 1,
+            })
+        }
+    }
+
+    extraLetter(e) {
+        e.preventDefault();
+        const newWords = this.state.wordObjs.splice(0);
+        newWords[this.state.wordIdx].letterObjs.push({
+            letter: e.key,
+            complete: true,
+            correct: false,
+            extra: true,
+        })
+        this.setState({
+            letterIdx: this.state.letterIdx + 1,
+            wordObjs: newWords,
+        })
+    }
+
+    correctLetter(e) {
+        e.preventDefault();
+        const newWords = this.state.wordObjs.splice(0);
+        Object.assign(newWords[this.state.wordIdx].letterObjs[this.state.letterIdx],
+            {
+                complete: true,
+                correct: true
+            });
+
+        this.setState({
+            letterIdx: this.state.letterIdx + 1,
+            wordObjs: newWords,
+        })
+    }
+
+    incorrectLetter(e) {
+        e.preventDefault();
+        const newWords = this.state.wordObjs.splice(0);
+        Object.assign(newWords[this.state.wordIdx].letterObjs[this.state.letterIdx],
+            {
+                complete: true,
+                correct: false
+            });
+
+        this.setState({
+            letterIdx: this.state.letterIdx + 1,
+            wordObjs: newWords,
+        })
+    }
+
     handleKeyPress(e){
         if (e.ctrlKey || e.metaKey || e.altKey || this.skipCodes.includes(e.keyCode)) {
 
         } else if ( e.keyCode === 32 ) {
-            e.preventDefault();
-            if (this.state.letterIdx !== 0) {
-                const newWords = this.state.wordObjs.splice(0);
-                newWords[this.state.wordIdx].complete = true;
-                
-                this.setState({
-                    wordObjs: newWords,
-                    letterIdx: 0,
-                    wordIdx: this.state.wordIdx + 1,
-                })
-            }
+            this.keySpace(e);
         } else if (this.state.letterIdx >= this.state.wordObjs[this.state.wordIdx].letterObjs.length) {
-            e.preventDefault();
-            const newWords = this.state.wordObjs.splice(0);
-            newWords[this.state.wordIdx].letterObjs.push({
-                letter: e.key,
-                complete: true,
-                correct: false,
-                extra: true,
-            })
-            this.setState({
-                letterIdx: this.state.letterIdx + 1,
-                wordObjs: newWords,
-            })
+            this.extraLetter(e);
         } else if (e.key === this.state.wordObjs[this.state.wordIdx].letterObjs[this.state.letterIdx].letter) {
-            e.preventDefault();
-            const newWords = this.state.wordObjs.splice(0);
-            Object.assign(newWords[this.state.wordIdx].letterObjs[this.state.letterIdx],
-                {
-                    complete: true,
-                    correct: true
-                });
-
-            this.setState({
-                letterIdx: this.state.letterIdx + 1,
-                wordObjs: newWords,
-            })
+            this.correctLetter(e);
         } else if (e.key !== this.state.wordObjs[this.state.wordIdx].letterObjs[this.state.letterIdx].letter) {
-            e.preventDefault();
-            const newWords = this.state.wordObjs.splice(0);
-            Object.assign(newWords[this.state.wordIdx].letterObjs[this.state.letterIdx],
-                {
-                    complete: true,
-                    correct: false
-                });
-
-            this.setState({
-                letterIdx: this.state.letterIdx + 1,
-                wordObjs: newWords,
-            })
+            this.incorrectLetter(e);
         }
     }
 
