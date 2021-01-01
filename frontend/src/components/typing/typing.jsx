@@ -21,9 +21,7 @@ export default class typing extends Component {
                 wordObjs: this.props.test.content.split(' ').map(word => ({
                     complete: false,
                     letterObjs: word.split('').map(letter => ({
-                        letter,
-                        complete: false,
-                        correct: null
+                        letter
                     }))
                 }))
             }));
@@ -40,6 +38,46 @@ export default class typing extends Component {
                 letterIdx: 0,
                 wordIdx: this.state.wordIdx + 1,
             })
+        }
+    }
+
+    keyBackspace(e) {
+        e.preventDefault();
+        const newWords = this.state.wordObjs.splice(0);
+        
+        if (this.state.letterIdx === 0) {
+            const newWordIdx = this.state.wordIdx - 1;
+            let newLetterIdx = newWords[newWordIdx].letterObjs.findIndex(letterObj => !letterObj.complete);
+            if (newLetterIdx === -1) newLetterIdx = newWords[newWordIdx].letterObjs.length;
+            newWords[newWordIdx].complete = false;
+
+            this.setState({
+                wordObjs: newWords,
+                wordIdx: newWordIdx,
+                letterIdx: newLetterIdx,
+            })
+            
+        } else {
+            const newLetterIdx = this.state.letterIdx - 1;
+            if (newWords[this.state.wordIdx].letterObjs[newLetterIdx].extra) {
+                newWords[this.state.wordIdx].letterObjs.pop();
+
+                this.setState({
+                    wordObjs: newWords,
+                    letterIdx: newLetterIdx
+                })
+            } else {
+                Object.assign(newWords[this.state.wordIdx].letterObjs[newLetterIdx], {
+                    complete: false,
+                    correct: null,
+                    error: false
+                })
+    
+                this.setState({
+                    wordObjs: newWords,
+                    letterIdx: newLetterIdx
+                })
+            }
         }
     }
 
@@ -93,6 +131,8 @@ export default class typing extends Component {
 
         } else if ( e.keyCode === 32 ) {
             this.keySpace(e);
+        } else if ( e.keyCode === 8 ) {
+            this.keyBackspace(e);
         } else if (this.state.letterIdx >= this.state.wordObjs[this.state.wordIdx].letterObjs.length) {
             this.extraLetter(e);
         } else if (e.key === this.state.wordObjs[this.state.wordIdx].letterObjs[this.state.letterIdx].letter) {
