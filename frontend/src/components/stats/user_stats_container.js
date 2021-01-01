@@ -5,13 +5,14 @@ import { fetchTest } from '../../actions/test_actions';
 
 const msp = state => ({
     currentUser: state.session.user,
+    currentTest: null,
     attempts: state.entities.attempts,
     tests: state.entities.tests,
     header: 'Your Overall Stats'
 })
 
 const mdp = dispatch => ({
-    fetchUserAttempts: userId => dispatch(fetchUserAttempts(userId)),
+    fetchAttempts: userId => dispatch(fetchUserAttempts(userId)),
     fetchTest: id => dispatch(fetchTest(id)),
 })
 
