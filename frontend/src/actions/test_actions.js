@@ -36,7 +36,11 @@ export const fetchTest = () => dispatch => {
 
 export const postTest = test => dispatch => {
     return TestAPIUtil.postTest(test)
-        .then(test => dispatch(receiveTest(test.data)))
+        .then((test) => {
+      dispatch(receiveTest(test.data))
+    }, (err) => console.log("inside errors", err)
+    );
+
 };
 
 export const deleteTest = id => dispatch => {
