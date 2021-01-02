@@ -24,14 +24,13 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
-      // .then(this.props.closeModal) ;
 
   }
 
   handleDemoUser(e) {
     e.preventDefault();
     const demoUser = { username: "DemoUser", password: "123456" };
-    this.props.loginDemoUser(demoUser).then(this.props.closeModal);
+    this.props.loginDemoUser(demoUser).then(this.props.closeSessionModal);
   }
 
   displayErrors() {

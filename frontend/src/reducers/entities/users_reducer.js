@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_USERS } from '../actions/user_actions';
+import { RECEIVE_ALL_USERS } from '../../actions/user_actions';
 
 const initialState = {}
 

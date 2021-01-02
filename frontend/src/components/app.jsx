@@ -2,7 +2,8 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
-import Modal from "./session/modal";
+import SessionModal from "./session/session_modal";
+import TestFormModal from "./test_form/test_form_modal";
 import Profile from './profile/profile';
 
 import MainPage from './main/main_page';
@@ -10,7 +11,8 @@ import MainPage from './main/main_page';
 const App = () => (
   <div className="app">
     <NavBarContainer />
-    <Modal />
+    <SessionModal />
+    <TestFormModal />
     <div className="app-inner">
       <Switch>
         <ProtectedRoute exact path="/profile" component={Profile} />
