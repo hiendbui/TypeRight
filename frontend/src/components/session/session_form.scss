@@ -1,11 +1,11 @@
 @import "../../assets/styles/colors.scss";
 
 .session-form {
-    background:$base-color;
+    background:$second-background;
     padding: 24px 36px;
     border-radius: 15px;
     width: 400px;
-    color: white;
+    color: $main-text;
 
     form {
         display: flex;
@@ -13,8 +13,8 @@
     }
 
     form input:focus {
-        border: 2px solid $triadic-2;
-        background: $main-accent;
+        border: 2px solid $accent-one;
+        background: $fifth-background
     }
 
     form input {
@@ -24,7 +24,7 @@
         line-height: 28px;
         padding-left: 10px;
         border-radius: 10px;
-        background: $inner-bg-color;
+        background: $third-background;
         border: 2px solid transparent;
     }
 
@@ -33,7 +33,7 @@
 
         h4 {
             margin: 24px 0px 8px 5px;
-            color: white;
+            color: $main-text;
         }
     }
     .text-input-section{
@@ -49,21 +49,21 @@
         padding: 6px 8px;
         border-radius: 10px;
         margin: 6px 0;
-         background: $inner-bg-color;
+         background: $fifth-background;
 
         // background:  $triadic-2;
-        color: white;
+        color: $main-text;
         text-align: center;
         width: 40%;
         min-width: 90px;
     }
     .demo-user-btn{
-         background: $inner-bg-color;
+         background: $fifth-background;
     }
 
     .sessionbutton:hover {
-        background: #004040;
-        color: white;
+        background: $main-background;
+        color: $main-text;
         cursor:pointer;
     }
 
@@ -91,29 +91,29 @@
         }
         button{
             border: none;
-            color: white;
+            color: $main-text;
         }
     }
     #modalForm button{
         height: 24px;
         line-height: 24px;
         padding-bottom: 6px;
-        border-bottom: 1px solid $light-main;
+        border-bottom: 1px solid $fifth-background;
     }
     .spacer{
         height: 30px;
         width: 12px;
-        border-bottom: 1px solid $light-main;
+        border-bottom: 1px solid $fifth-background;
     }
     .spacer-fill-right{
         height: 30px;
         flex: 1;
-        border-bottom: 1px solid $light-main; 
+        border-bottom: 1px solid $fifth-background; 
     }
 
     button#selected-form, button#selected-form-two {
-        // color: $inner-bg-color;
-        border-bottom: 3px solid $triadic-2;
+        // color: $fifth-background;
+        border-bottom: 3px solid $accent-one;
         padding-bottom: 5px;
 
     }
