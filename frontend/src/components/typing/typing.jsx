@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import WordItem from './word_item';
 
 export default class typing extends Component {
     constructor(props){
@@ -46,17 +45,21 @@ export default class typing extends Component {
         const newWords = this.state.wordObjs.splice(0);
         
         if (this.state.letterIdx === 0) {
-            const newWordIdx = this.state.wordIdx - 1;
-            let newLetterIdx = newWords[newWordIdx].letterObjs.findIndex(letterObj => !letterObj.complete);
-            if (newLetterIdx === -1) newLetterIdx = newWords[newWordIdx].letterObjs.length;
-            newWords[newWordIdx].complete = false;
 
-            this.setState({
-                wordObjs: newWords,
-                wordIdx: newWordIdx,
-                letterIdx: newLetterIdx,
-            })
-            
+            if (this.state.wordIdx !== 0) {
+                const newWordIdx = this.state.wordIdx - 1;
+                let newLetterIdx = newWords[newWordIdx].letterObjs.findIndex(letterObj => !letterObj.complete);
+                if (newLetterIdx === -1) newLetterIdx = newWords[newWordIdx].letterObjs.length;
+                newWords[newWordIdx].complete = false;
+    
+                this.setState({
+                    wordObjs: newWords,
+                    wordIdx: newWordIdx,
+                    letterIdx: newLetterIdx,
+                })
+            } else {
+                this.setState({wordObjs: newWords}); // I don't know why but there's a bug without this line;
+            }
         } else {
             const newLetterIdx = this.state.letterIdx - 1;
             if (newWords[this.state.wordIdx].letterObjs[newLetterIdx].extra) {
@@ -141,6 +144,20 @@ export default class typing extends Component {
             this.incorrectLetter(e);
         }
     }
+    
+    letterClass (letterObj) {
+        if (letterObj.complete) {
+            if (letterObj.extra) {
+                return 'letter incorrect extra';
+            } else if (letterObj.correct) {
+                return 'letter correct';
+            } else {
+                return 'letter incorrect';
+            }
+        } else {
+            return 'letter';
+        }
+    }
 
     render() {
         if(!this.state.wordObjs) return null;
@@ -155,11 +172,7 @@ export default class typing extends Component {
                         {wordObj.letterObjs.map((letterObj, idx) => (
                             <span
                                 key={idx}
-                                className={letterObj.complete ? (
-                                    letterObj.extra ? 'letter incorrect extra' : 
-                                        (letterObj.correct ? 'letter correct' : 'letter incorrect')
-                                    ) : 'letter'
-                                }
+                                className={this.letterClass(letterObj)}
                             >
                                 {letterObj.letter}
                             </span>
