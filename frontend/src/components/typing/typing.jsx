@@ -42,29 +42,28 @@ export default class typing extends Component {
 
     keyBackspace(e) {
         e.preventDefault();
-        const newWords = this.state.wordObjs.splice(0);
         
         if (this.state.letterIdx === 0) {
-
+            
             if (this.state.wordIdx !== 0) {
+                const newWords = this.state.wordObjs.splice(0);
                 const newWordIdx = this.state.wordIdx - 1;
                 let newLetterIdx = newWords[newWordIdx].letterObjs.findIndex(letterObj => !letterObj.complete);
                 if (newLetterIdx === -1) newLetterIdx = newWords[newWordIdx].letterObjs.length;
                 newWords[newWordIdx].complete = false;
-    
+                
                 this.setState({
                     wordObjs: newWords,
                     wordIdx: newWordIdx,
                     letterIdx: newLetterIdx,
                 })
-            } else {
-                this.setState({wordObjs: newWords}); // I don't know why but there's a bug without this line;
             }
         } else {
+            const newWords = this.state.wordObjs.splice(0);
             const newLetterIdx = this.state.letterIdx - 1;
             if (newWords[this.state.wordIdx].letterObjs[newLetterIdx].extra) {
                 newWords[this.state.wordIdx].letterObjs.pop();
-
+                
                 this.setState({
                     wordObjs: newWords,
                     letterIdx: newLetterIdx
@@ -75,7 +74,7 @@ export default class typing extends Component {
                     correct: null,
                     error: false
                 })
-    
+                
                 this.setState({
                     wordObjs: newWords,
                     letterIdx: newLetterIdx
