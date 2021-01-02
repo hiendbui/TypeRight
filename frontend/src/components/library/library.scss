@@ -15,11 +15,12 @@
     width: 18%;
     min-width: 180px;
     height: 240px;
+    border: 1px solid $fourth-background;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     margin: 6px;
-    background-image: linear-gradient($faded-complimentary, $base-color);
+    background: $third-background;
     padding-top: 24px;
     box-sizing: border-box;
     position: relative;
@@ -28,7 +29,7 @@
     transition: top ease 0.5s;
 }
 .test-item-container:hover{
-    background-image: linear-gradient($faded-complimentary, $base-color);
+    // background: $third-background;
     top: -2px;
 }
 .filling-empty-space-childs {
@@ -39,7 +40,7 @@
 }
 
 .test-item-preview{
-    background: $light-main;
+    background: $accent-three;
     margin: 0 24px;
     padding: 12px;
     height: 100%;
@@ -51,18 +52,18 @@
 
 }
 .test-item-container:hover .test-item-preview{
-    background: $light-main;
+    background: $accent-two;
     top: -12px;
 }
 .test-item-container:focus .test-item-preview{
-    background: $light-main;
+    background: $accent-two;
 
     top: -24px;
 }
 
 .test-item-title{
-    // background: $base-color;
-    background-image: linear-gradient(rgb(13, 37, 37), $base-color);
+    background: $fourth-background;
+    border-top: 1px solid $fifth-background;
     height: 84px;
     line-height: 84px;
     text-align: center;
@@ -76,7 +77,7 @@
 transition: background-image 0.5s ease-in-out;
 
 }
-.test-item-container:hover .test-item-title{
+// .test-item-container:hover .test-item-title{
     // background: $triadic-1;
-    background-image: linear-gradient($triadic-1,$triadic-1);
-}
+    // background: $fifth-background;
+// }
