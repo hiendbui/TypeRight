@@ -10,7 +10,6 @@ const initialState = {}
 const testReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_LATEST_TESTS:
-        console.log(action);
         return {
             ...state,
             ...arrayToObj(action.tests),

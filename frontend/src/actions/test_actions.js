@@ -37,9 +37,9 @@ export const fetchRandomTest = () => dispatch => {
         .then(test => dispatch(receiveTest(test.data[0])))
 };
 
-export const fetchTest = () => dispatch => {
-    return TestAPIUtil.fetchTest()
-        .then(test => dispatch(receiveTest(test.data[0])))
+export const fetchTest = id => dispatch => {
+    return TestAPIUtil.fetchTest(id)
+        .then(test => dispatch(receiveTest(test.data)))
 };
 
 export const postTest = test => dispatch => {
