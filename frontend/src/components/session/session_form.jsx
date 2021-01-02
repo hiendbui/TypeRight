@@ -47,7 +47,7 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className="session-form">
+      <div className="modal-form">
         <div className="link-to-other">
           {this.props.formType === "Log In" ? (
             <div id="modalForm">
@@ -96,10 +96,10 @@ class SessionForm extends React.Component {
                 ) : null}
           </div>
           <div className="session-buttons-container">
-            <button type="button" onClick={this.handleDemoUser} className="sessionbutton">
+            <button type="button" onClick={this.handleDemoUser} className="submit-btn">
               Demo User
             </button>
-            <button type="submit" className="sessionbutton">{this.props.formType}</button>
+            <button type="submit" className="submit-btn">{this.props.formType}</button>
           </div>
         </form>
       </div>

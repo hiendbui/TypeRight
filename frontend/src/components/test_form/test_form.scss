@@ -1,0 +1,32 @@
+@import "../../assets/styles/colors.scss";
+
+.submit-btn.test-form-btn{
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+.content textarea{
+    line-height: 19px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    background: $third-background;
+    border: 2px solid transparent;
+}
+
+.content textarea:focus {
+    border: 2px solid $accent-one;
+    background: $fifth-background
+}
+
+.close-modal{
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    cursor: pointer;
+}
+.close-modal *{
+    stroke: $main-text;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//add css here
+import "./test_form.scss"
 
 export default class TestForm extends Component {
     constructor(props) {
@@ -23,12 +23,12 @@ export default class TestForm extends Component {
 
     render() {
         return (
-      <div className="session-form">
-
+      <div className="modal-form">
             <form onSubmit={this.handleSubmit}>
                 <div className="text-input-section">
                     <h3>{this.props.formType}</h3>
-                    <label className="title">Title: 
+                    <label className="title">
+                        <h4>Title</h4>
                         <input 
                             type="text" 
                             required 
@@ -38,7 +38,8 @@ export default class TestForm extends Component {
                             onChange={this.handleInput("title")}
                         />
                     </label>
-                    <label className="content">Content: 
+                    <label className="content">
+                        <h4>Content</h4>
                         <textarea 
                             name="content" 
                             cols="30" 
@@ -46,11 +47,12 @@ export default class TestForm extends Component {
                             placeholder="Type or copy and paste the content of your typing test here"
                             onChange={this.handleInput("content")}
                             required
+                            wrap="hard"
                             value={this.state.content}
                         />
                     </label>
-                    <input className="uploadbutton" type="submit" value={this.props.formType}/>
                 </div>
+                    <button className="test-form-btn submit-btn" type="submit">{this.props.formType}</button>
             </form>
         </div>
         )
