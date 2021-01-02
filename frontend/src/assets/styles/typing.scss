@@ -1,0 +1,24 @@
+.letter {
+    color: gray;
+}
+
+.letter.correct {
+    color: purple;
+}
+
+.letter.incorrect {
+    color: red;
+}
+
+.letter.incorrect.extra {
+    color: blue;
+}
+
+.word {
+    margin: 3px 8px;
+}
+
+.word.error {
+    text-decoration: underline;
+    text-decoration-color: red;
+}
