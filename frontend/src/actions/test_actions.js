@@ -1,5 +1,6 @@
 import * as TestAPIUtil from '../util/test_api_util';
 
+export const SELECT_TEST = "SELECT_TEST";
 export const RECEIVE_LATEST_TESTS = 'RECEIVE_LATEST_TESTS';
 export const RECEIVE_TEST = 'RECEIVE_TEST';
 export const REMOVE_TEST = 'REMOVE_TEST';
@@ -18,6 +19,11 @@ const removeTest = testId => ({
     type: REMOVE_TEST,
     testId
 });
+
+export const selectTest = testId => ({
+    type: SELECT_TEST,
+    testId
+})
 
 export const fetchLatestTests = () => dispatch => {
     return TestAPIUtil.fetchLatestTests()

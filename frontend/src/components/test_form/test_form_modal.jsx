@@ -5,7 +5,7 @@ import CreateTest from './create_test_container.js';
 import UpdateTest from './update_test_container';
 //import css here
 
-function TestFormModal({ modal, closeTestFormModal, test}) {
+function TestFormModal({ modal, closeTestFormModal}) {
     if (!modal) return null;
     console.log("in the test form modal:", modal);
     let component;
@@ -14,7 +14,7 @@ function TestFormModal({ modal, closeTestFormModal, test}) {
         component = <CreateTest />;
         break;
         case "Update":
-        component = <UpdateTest test={test} />;
+        component = <UpdateTest />;
         break;
         default:
         return null;
@@ -29,7 +29,6 @@ function TestFormModal({ modal, closeTestFormModal, test}) {
 }
 
 const msp = state => {
-    console.log(state.ui.modals.testForm)
     return {
         modal: state.ui.modals.testForm
     }
