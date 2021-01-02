@@ -12,7 +12,7 @@ router.post('/',
             time: req.body.time,
             wpm: parseInt(req.body.wpm),
             typos: req.body.typos,
-            user: req.body.user,
+            user: req.user.id,
             test: req.body.test,
             accuracy: req.body.accuracy,
             placeholder: req.body.placeholder

@@ -31,7 +31,7 @@ export default class UserStats extends React.Component {
                              <Label value="Test Attempts" stroke="white" offset={0} position="insideBottom" />
                         </XAxis>
                         <YAxis dataKey="y" >
-                            <Label value="Words Per Minute" angle="-90"  stroke="white"  position="Left" />
+                            <Label value="Words Per Minute" angle={-90}  stroke="white"  position="left" />
                         </YAxis>
                     </AreaChart>
                 </div>
