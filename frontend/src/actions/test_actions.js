@@ -1,4 +1,6 @@
 import * as TestAPIUtil from '../util/test_api_util';
+import { closeTestFormModal } from "./modal_actions";
+
 
 export const SELECT_TEST = "SELECT_TEST";
 export const RECEIVE_LATEST_TESTS = 'RECEIVE_LATEST_TESTS';
@@ -42,10 +44,8 @@ export const fetchTest = () => dispatch => {
 
 export const postTest = test => dispatch => {
     return TestAPIUtil.postTest(test)
-        .then((test) => {
-      dispatch(receiveTest(test.data))
-    }, (err) => console.log("inside errors", err)
-    );
+        .then((test) => dispatch(receiveTest(test.data)))
+        .then(() => dispatch(closeTestFormModal()));
 
 };
 
@@ -56,5 +56,6 @@ export const deleteTest = id => dispatch => {
 
 export const updateTest = (id, test) => dispatch => {
     return TestAPIUtil.updateTest(id, test)
-        .then(test => dispatch(receiveTest(test.data)))
+      .then((test) => dispatch(receiveTest(test.data)))
+      .then(() => dispatch(closeTestFormModal()));
 };

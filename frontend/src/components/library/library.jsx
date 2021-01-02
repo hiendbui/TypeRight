@@ -9,6 +9,10 @@ export default class Library extends Component {
     componentDidMount(){
         this.props.fetchLatestTests();
     }
+    // componentDidUpdate(){
+    //     this.props.fetchLatestTests();
+
+    // }
     render() {
         if (!this.props.tests.latest) return null;
         return (

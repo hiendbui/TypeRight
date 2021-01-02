@@ -8,8 +8,8 @@ const msp = (state) => ({
   formType: 'Update Test',
 });
 
-const mdp = (dispatch) => ({
-  submitForm: (test) => dispatch(updateTest(test))
+const mdp = (dispatch, ownProps) => ({
+  submitForm: (test) => dispatch(updateTest(ownProps.testId, test))
 });
 
 export default connect(msp, mdp)(TestForm);

@@ -12,7 +12,6 @@ export default class TestForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const test = Object.assign({}, this.state);
-        debugger;
         this.props.submitForm(test);
     }
 
