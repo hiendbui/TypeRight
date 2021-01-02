@@ -190,6 +190,7 @@ export default class typing extends Component {
         ) + wordObjs.length -1;
         
         const time = Date.now() - this.state.startedAt;
+
         const rawWpm = totalChars / (time / 1000 / 60) / 5;
 
         const incompleteWords = wordObjs.filter(wordObj =>
@@ -204,7 +205,9 @@ export default class typing extends Component {
         );
 
         const typos = incompleteWords + incorrectLetters;
+
         const accuracy = (totalChars - typos) / totalChars;
+        
         const adjustedWpm = rawWpm * accuracy;
         
         this.props.createAttempt({
