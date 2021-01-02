@@ -22,9 +22,12 @@ const AttemptSchema = new Schema({
         type: Number,
         required: true
     },
-    placeholder: {
+    accuracy: {
         type: Number,
         required: true
+    },
+    placeholder: {
+        type: Number,
     }
     }, {
     timestamps: true
