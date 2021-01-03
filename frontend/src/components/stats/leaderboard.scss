@@ -32,13 +32,10 @@
     text-align: center;
 }
 
-.no-leaderboard {
-    background: $accent-one;
-}
-
 .no-leaderboard-td {
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
+    text-align: center;
+    background-color: $accent-one;
+    border-radius: 10px;
 }
 
 table {
@@ -60,11 +57,11 @@ th {
 }
 
 th:first-child {
-    border-top-left-radius: 9px;
+    border-top-left-radius: 10px;
 }
 
 th:last-child {
-    border-top-right-radius: 9px;
+    border-top-right-radius: 10px;
 }
 
 table tr:last-child td:last-child {

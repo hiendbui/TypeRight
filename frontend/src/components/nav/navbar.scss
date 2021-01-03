@@ -14,10 +14,12 @@
     h1{
         margin-right: auto;
         font-size: 19px;
+        color: white;
     }
     .navRight > * {
         padding-right: 24px;
         cursor: pointer;
+        color: white;
     }
     .navRight > *:hover {
         color: $accent-one;

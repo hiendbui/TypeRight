@@ -9,7 +9,7 @@ const msp = (state, ownProps) => ({
     currentUser: state.session.user,
     currentTest: ownProps.match.params.testId,
     // currentTest: state.entities.tests.current,
-    attempts: Object.values(state.entities.attempts),
+    attempts: Object.values(state.entities.attempts).sort((a,b) => (a.wpm < b.wpm) ? 1: -1),
     tests: state.entities.tests,
     users: state.entities.users
 })

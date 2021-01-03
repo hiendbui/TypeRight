@@ -4,7 +4,6 @@ import "./attempt.scss"
 export default function Attempt(props) {
     return (
         <div>
-            <h3>Stats</h3>
             <div className="attempt-container">
                 <div className="wpm">
                     <h4>WPM</h4>

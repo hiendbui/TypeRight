@@ -16,10 +16,16 @@ button, input, textarea{
     justify-content: center;
 }
 
-// .main-wrapper-component {
-//     display: flex;
-//     justify-content: center;
-// }
+.main-wrapper-component {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
 
 .page-card{
     background-color: $second-background;
@@ -28,6 +34,7 @@ button, input, textarea{
     padding: 24px 48px;
     max-width: 1200px;
 }
+
 h1, h2, h3 {
     text-align: center;
 }
