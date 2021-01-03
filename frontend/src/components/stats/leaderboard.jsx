@@ -11,6 +11,7 @@ class Leaderboard extends React.Component {
     checkAttempts(count, attempt) {
 
         if (attempt) {
+            console.log(attempt)
             return (
                 <tr className="leaderboard-row">
                     <td className="leaderboard-rank">{count}.</td>

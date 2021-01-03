@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import TypingContainer from "../typing/typing_container"
+import LeaderboardContainer from '../stats/leaderboard_container'
+import UserTestStatsContainer from '../stats/user_test_stats_container'
 
 export default class Test extends Component {
     constructor(props) {
@@ -21,8 +23,8 @@ export default class Test extends Component {
             <div>
                 {this.state.loaded && <TypingContainer/>}
                 <section className="bottom-section">
-                    <div>Leadboard placeholder</div>
-                    <div>Stats placeholder</div>
+                    <LeaderboardContainer/>
+                    <UserTestStatsContainer/>
                 </section>
             </div>
         )

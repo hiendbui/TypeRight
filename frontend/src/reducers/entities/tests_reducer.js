@@ -3,8 +3,8 @@ import { RECEIVE_LATEST_TESTS,
          REMOVE_TEST,
          RECEIVE_USER_TESTS,
          SELECT_TEST
-} from '../actions/test_actions';
-import { arrayToObj, arrayOfIds } from './selectors';
+} from '../../actions/test_actions';
+import { arrayToObj, arrayOfIds } from '../selectors';
 
 const initialState = {}
 

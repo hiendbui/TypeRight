@@ -3,6 +3,7 @@ import Leaderboard from './leaderboard';
 import { fetchTestAttempts } from '../../actions/attempt_actions';
 import { fetchTest } from '../../actions/test_actions';
 import { fetchAllUsers } from '../../actions/user_actions'
+import {withRouter} from  "react-router-dom";
 
 const msp = (state, ownProps) => ({
     currentUser: state.session.user,
@@ -19,5 +20,5 @@ const mdp = dispatch => ({
     fetchAllUsers: () => dispatch(fetchAllUsers())
 })
 
-const LeaderboardContainer = connect(msp,mdp)(Leaderboard);
+const LeaderboardContainer = withRouter(connect(msp,mdp)(Leaderboard));
 export default LeaderboardContainer;

@@ -18,7 +18,7 @@ const App = () => (
     <div className="app-inner">
       <Switch>
         <ProtectedRoute exact path="/profile" component={Profile} />
-        <Route exact path="/tests/:testId" component={LeaderboardContainer} />
+        <Route exact path="/tests/:testId" component={Test} />
         <Route exact path="/" component={MainPage} />
         <Route path="/tests/:testId" component={Test} />
         <Redirect to="/"/>
