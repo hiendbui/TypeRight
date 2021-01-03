@@ -163,7 +163,7 @@ export default class typing extends Component {
         return (
         <div>
             <h3>{this.props.test.title}</h3>
-            <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabindex="-1" >
+            <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabIndex="-1" >
                 {this.state.wordObjs.map( (wordObj, idx) => 
                     <span
                         className={!wordObj.complete || wordObj.letterObjs.every(letterObj => letterObj.correct) ? 'word' : 'word error'}
