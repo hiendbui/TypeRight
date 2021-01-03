@@ -207,7 +207,7 @@ export default class typing extends Component {
         const typos = incompleteWords + incorrectLetters;
 
         const accuracy = (totalChars - typos) / totalChars;
-        
+
         const adjustedWpm = rawWpm * accuracy;
         
         this.props.createAttempt({
@@ -224,19 +224,28 @@ export default class typing extends Component {
 
         return (
             <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabindex="-1" >
-                {this.state.wordObjs.map( (wordObj, idx) => 
+                {this.state.wordObjs.map( (wordObj, wIdx) => 
                     <span
                         className={!wordObj.complete || wordObj.letterObjs.every(letterObj => letterObj.correct) ? 'word' : 'word error'}
-                        key={idx}
+                        key={wIdx}
                     >
                         {wordObj.letterObjs.map((letterObj, idx) => (
                             <span
                                 key={idx}
                                 className={this.letterClass(letterObj)}
                             >
+                                {wIdx === this.state.wordIdx &&
+                                    idx === this.state.letterIdx &&
+                                    <span className='cursor'></span>
+                                }
                                 {letterObj.letter}
+                                
                             </span>
                         ))}
+                        {wIdx === this.state.wordIdx &&
+                            this.state.letterIdx === wordObj.letterObjs.length &&
+                            <span className='cursor'></span>
+                        }
                     </span>
                 )}
             </div>
