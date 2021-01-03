@@ -10,8 +10,8 @@ class MainPage extends React.Component {
   }
   render() {
     return (
-      <div>
-        {/* <TypingContainer/> */}
+      <div className="main-wrapper-component">
+        {/* <TypeContainer/> */}
         <LibraryContainer/>
         <CreateTest/>
         <footer>

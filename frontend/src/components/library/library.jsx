@@ -7,19 +7,20 @@ export default class Library extends Component {
         super(props)
     }
     componentDidMount(){
-        this.props.fetchLatestTests();
+        this.props.fetchTests();
     }
     // componentDidUpdate(){
     //     this.props.fetchLatestTests();
 
     // }
     render() {
-        if (!this.props.tests.latest) return null;
+        if (!this.props.tests.latest || Object.values(this.props.tests).filter(ele => (ele.uploader === this.props.currentUser)).length === 0) return null;
+
         return (
             <div className="library-container">
-                <h3>Explore Our Latest Test Submissions</h3>
+                <h3>{this.props.header}</h3>
                 <div className="page-card library">
-                    {this.props.tests.latest.map(testId => (
+                    {(this.props.tests.latest ? this.props.header === "Explore Our Latest Test Submissions" ? this.props.tests.latest : Object.values(this.props.tests).filter(ele => (ele.uploader === this.props.currentUser)).map(test => test._id) : []).map(testId => (
                         <TestItem key={testId} test={this.props.tests[testId]} />
                     ))}
                     <div className="filling-empty-space-childs"></div>

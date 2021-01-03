@@ -37,6 +37,8 @@ router.get('/users/:user', (req, res) => {
     
 router.get('/tests/:test', (req, res) => {
     Attempt.find({ test : req.params.test })
+    .sort({ wpm: -1 })
+    .limit(5)
     .then(attempts => {
         const newObj = {}
         attempts.forEach((attempt) => newObj[attempt.id] = attempt)

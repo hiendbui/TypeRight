@@ -10,7 +10,8 @@ const attemptsReducer = (state = initialState, action) => {
     case RECEIVE_ATTEMPTS:
         return action.attempts;
     case RECEIVE_SINGLE_ATTEMPT:
-        return {...state, ...action.attempt}
+        console.log(action.attempt)
+        return {...state, [action.attempt._id]: action.attempt}
     default:
         return state;
   }

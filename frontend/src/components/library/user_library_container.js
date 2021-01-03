@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
-import { fetchLatestTests } from '../../actions/test_actions'
+import { fetchUserTests } from '../../actions/test_actions'
 import Library from './library';
 
 const mapStateToProps = state => ({
    tests: state.entities.tests,
-   header: "Explore Our Latest Test Submissions"
+   currentUser: state.session.user.id,
+   header: "Your Library"
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchTests: () => dispatch(fetchLatestTests()),
+    fetchTests: () => dispatch(fetchUserTests()),
 })
 
 export default connect(

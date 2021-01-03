@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+export const fetchUserTests = (userId) => {
+    return axios.get(`api/tests/users/${userId}`)
+}
 export const fetchLatestTests = () => {
     return axios.get('api/tests')
 };

@@ -1,6 +1,7 @@
 import { RECEIVE_LATEST_TESTS, 
          RECEIVE_TEST,
          REMOVE_TEST,
+         RECEIVE_USER_TESTS,
          SELECT_TEST
 } from '../../actions/test_actions';
 import { arrayToObj, arrayOfIds } from '../selectors';
@@ -9,6 +10,8 @@ const initialState = {}
 
 const testReducer = (state = initialState, action) => {
   switch (action.type) {
+    case RECEIVE_USER_TESTS:
+        return action.tests
     case RECEIVE_LATEST_TESTS:
         return {
             ...state,
