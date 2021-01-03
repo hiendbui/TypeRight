@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
-import { fetchRandomTest } from '../../actions/test_actions'
-import Typing from './typing';
+import { fetchRandomTest } from '../../actions/test_actions';
+import { createAttempt } from '../../actions/attempt_actions';
 
-const mapStateToProps = state => ({
-   test: state.entities.tests[state.entities.tests.current],
+import Typing from './typing';
+import {withRouter} from "react-router-dom";
+
+const mapStateToProps = (state, ownProps) => ({
+   test: state.entities.tests[ownProps.match.params.testId],
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchRandomTest: () => dispatch(fetchRandomTest()),
+    createAttempt: (attempt) => dispatch(createAttempt(attempt)),
 })
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Typing);
+)(Typing));

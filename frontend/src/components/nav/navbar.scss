@@ -23,3 +23,13 @@
         color: $accent-one;
     }
 }
+.home-btn{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img{
+        height: 30px;
+        width: auto;
+        margin-right: 8px;
+    }
+}

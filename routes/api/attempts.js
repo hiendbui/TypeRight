@@ -17,10 +17,6 @@ router.post('/',
             accuracy: req.body.accuracy,
             placeholder: req.body.placeholder
         });
-        
-        if (newAttempt.wpm === 0) {
-            return res.status(400).json({err: "Not valid attempt"});
-        }
 
         newAttempt.save()
             .then(attempt => res.json(attempt))

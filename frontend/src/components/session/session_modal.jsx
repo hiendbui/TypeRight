@@ -1,11 +1,11 @@
 import React from "react";
-import { closeModal } from "../../actions/modal_actions";
+import { closeSessionModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import LoginContainer from "./login_container";
 import SignupContainer from "./signup_container";
-import "./modal.scss"
+import "./session_modal.scss"
 
-function Modal({ modal, closeModal }) {
+function SessionModal({ modal, closeSessionModal }) {
   if (!modal) {
     return null;
 
@@ -22,7 +22,7 @@ function Modal({ modal, closeModal }) {
       return null;
   }
   return (
-    <div className="modal-background" onClick={closeModal}>
+    <div className="modal-background" onClick={closeSessionModal}>
       <div className="modal-child" onClick={(e) => e.stopPropagation()}>
         {component}
       </div>
@@ -32,14 +32,14 @@ function Modal({ modal, closeModal }) {
 
 const msp = (state) => {
   return {
-    modal: state.ui.modal,
+    modal: state.ui.modals.session,
   };
 };
 
 const mdp = (dispatch) => {
   return {
-    closeModal: () => dispatch(closeModal()),
+    closeSessionModal: () => dispatch(closeSessionModal()),
   };
 };
 
-export default connect(msp, mdp)(Modal);
+export default connect(msp, mdp)(SessionModal);

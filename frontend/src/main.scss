@@ -1,11 +1,12 @@
 @import "./assets/styles/colors.scss";
+@import './assets/styles/typing.scss';
 
 body{
     background-color: $main-background;
     color: $main-text;
     font-family: 'Montserrat';
 }
-button, input{
+button, input, textarea{
     all: unset;
 }
 

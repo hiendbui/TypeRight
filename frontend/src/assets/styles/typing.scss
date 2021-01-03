@@ -1,0 +1,46 @@
+@import "./colors.scss";
+.letter {
+    color: gray;
+}
+
+.letter.correct {
+    color: $main-text;
+}
+
+.letter.incorrect {
+    color: lightcoral;
+}
+
+.letter.incorrect.extra {
+    color: rgb(222, 53, 53);
+}
+
+.word {
+    margin: 3px 8px;
+}
+
+.word.error {
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+
+.cursor {
+    outline: 1px solid orange;
+    animation-name: cursor-blink;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+@keyframes cursor-blink {
+    0%,
+    50% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+}
+.type-container{
+    display: flex;
+    flex-wrap: wrap;
+}
