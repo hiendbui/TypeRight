@@ -1,0 +1,42 @@
+@import "../../assets/styles/colors.scss";
+
+.leaderboard-table {
+    min-width: 340px;
+    max-width: 800px;
+}
+
+.leaderboard-rank {
+    text-align: right;
+}
+
+.no-leaderboard {
+    background: $accent-three;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border: 1px solid $accent-three;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+th {
+    vertical-align: middle;
+    padding: 10px;
+    text-align: left;
+    background: $accent-three;
+}
+
+th:first-child {
+    border-top-left-radius: 9px;
+}
+
+th:last-child {
+    border-top-right-radius: 9px;
+}
+
+td {
+    padding: 10px;
+    border-top: none;
+}

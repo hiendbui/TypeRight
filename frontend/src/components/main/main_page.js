@@ -7,7 +7,7 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-wrapper-component">
         <TypeContainer/>
         <LibraryContainer/>
         <CreateTest/>
