@@ -33,28 +33,30 @@ class Leaderboard extends React.Component {
     render() {
         if (this.props.attempts.length === 0) {
             return (
-                <div className="no-leaderboard">
-                    Be the first on the leaderboard!
-                </div>
+                <tr className="no-leaderboard">
+                    <td className="no-leaderboard-td">Be the first on the leaderboard!</td>
+                </tr>
             )
         }
         let count = 1;
         return (
             <div className="leaderboard-table">
-                <table>
-                    <tbody>
-                        <tr className="leaderboard-header-row">
-                            <th className="rank">Rank</th>
-                            <th className="user">User</th>
-                            <th className="wpm">WPM</th>
-                        </tr>
-                        {this.checkAttempts(count, this.props.attempts[0])}
-                        {this.checkAttempts(count + 1, this.props.attempts[1])}
-                        {this.checkAttempts(count + 2, this.props.attempts[2])}
-                        {this.checkAttempts(count + 3, this.props.attempts[3])}
-                        {this.checkAttempts(count + 4, this.props.attempts[4])}
-                    </tbody>
-                </table>
+                <div className="another-class">
+                    <table>
+                        <tbody>
+                            <tr className="leaderboard-header-row">
+                                <th className="rank">Rank</th>
+                                <th className="user">User</th>
+                                <th className="wpm">WPM</th>
+                            </tr>
+                            {this.checkAttempts(count, this.props.attempts[0])}
+                            {this.checkAttempts(count + 1, this.props.attempts[1])}
+                            {this.checkAttempts(count + 2, this.props.attempts[2])}
+                            {this.checkAttempts(count + 3, this.props.attempts[3])}
+                            {this.checkAttempts(count + 4, this.props.attempts[4])}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }

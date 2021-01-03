@@ -5,7 +5,6 @@ import NavBarContainer from './nav/navbar_container';
 import SessionModal from "./session/session_modal";
 import TestFormModal from "./test_form/test_form_modal";
 import Profile from './profile/profile';
-import LeaderboardContainer from './stats/leaderboard_container'
 import Test from "./test/test_container"
 
 import MainPage from './main/main_page';

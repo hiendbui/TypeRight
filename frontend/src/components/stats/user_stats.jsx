@@ -1,5 +1,5 @@
 import React from 'react';
-import {AreaChart,  Area, CartesianGrid, XAxis, YAxis, Label } from 'recharts';
+import {AreaChart,  Area, CartesianGrid, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import './user_stats.scss' 
 export default class UserStats extends React.Component {
     componentDidMount() {
@@ -37,18 +37,22 @@ export default class UserStats extends React.Component {
             <div className="user-stats-wrapper">
                 <h1>{this.props.header}</h1>
                 <div className="user-stats">
-                    <AreaChart width={750} height={500} data={data} >
-                        <Area type="monotone" dataKey="y" stroke="#563097c5" fill="#7a44d8" />
-                        <CartesianGrid stroke="#ccc" />
-                        <XAxis dataKey="x" >
-                             <Label value="Test Attempts" stroke="white" offset={0} position="insideBottom" />
-                        </XAxis>
-                        <YAxis dataKey="y" >
-                            <Label value="Words Per Minute" angle={-90}  stroke="white" position="insideLeft" dy={70}/>
-                        </YAxis>
-                    </AreaChart>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <AreaChart data={data} >
+                            <Area type="monotone" dataKey="y" stroke="#563097c5" fill="#7a44d8" />
+                            <CartesianGrid stroke="#ccc" />
+                            <XAxis dataKey="x" height={40} >
+                                <Label value="Test Attempts" stroke="white" offset={0} position="insideBottom" dy={0}/>
+                            </XAxis>
+                            <YAxis dataKey="y" >
+                                <Label value="Words Per Minute" angle={-90}  stroke="white" position="insideLeft" dy={70}/>
+                            </YAxis>
+                        </AreaChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
         )
     }
 }
+
+// width={750} height={500}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import TypingContainer from "../typing/typing_container"
 import LeaderboardContainer from '../stats/leaderboard_container'
 import UserTestStatsContainer from '../stats/user_test_stats_container'
+import './test.scss'
 
 export default class Test extends Component {
     constructor(props) {
@@ -22,10 +23,14 @@ export default class Test extends Component {
         return (
             <div>
                 {this.state.loaded && <TypingContainer/>}
-                <section className="bottom-section">
-                    <LeaderboardContainer/>
-                    <UserTestStatsContainer/>
-                </section>
+                <div className="bottom-div">
+                    <div className="leadboard-wrapper">
+                        <LeaderboardContainer/>
+                    </div>
+                    <div className="user-tests-stats-wrapper">
+                        <UserTestStatsContainer/>
+                    </div>
+                </div>
             </div>
         )
     }
