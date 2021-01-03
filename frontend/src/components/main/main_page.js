@@ -1,15 +1,15 @@
 import React from 'react';
-import TypeContainer from '../typing/typing_container';
 import LibraryContainer from '../library/library_container';
 import CreateTest from "./create_test";
 import "./main_page.scss";
 
 class MainPage extends React.Component {
-
+  constructor(props) {
+    super(props)
+  }
   render() {
     return (
       <div>
-        <TypeContainer/>
         <LibraryContainer/>
         <CreateTest/>
         <footer>

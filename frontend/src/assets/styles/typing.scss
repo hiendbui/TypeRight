@@ -1,9 +1,10 @@
+@import "./colors.scss";
 .letter {
     color: gray;
 }
 
 .letter.correct {
-    color: white;
+    color: $main-text;
 }
 
 .letter.incorrect {
@@ -21,4 +22,9 @@
 .word.error {
     text-decoration: underline;
     text-decoration-color: red;
+}
+
+.type-container{
+    display: flex;
+    flex-wrap: wrap;
 }
