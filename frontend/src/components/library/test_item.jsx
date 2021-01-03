@@ -10,7 +10,7 @@ function TestItem({ test, selectTest, openTestFormModal }) {
         openTestFormModal("Update")
     }
     return (
-        <Link to="#" className='test-item-container'>
+        <Link to={`/tests/${test._id}`} className='test-item-container'>
             <div className="test-item-preview">{test.content}</div>
             <div className="test-item-title">{test.title}
             {/* <button onClick={(e) => {editTest(test._id); e.stopPropagation()}}>edit</button> */}

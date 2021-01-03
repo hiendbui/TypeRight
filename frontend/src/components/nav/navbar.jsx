@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./navbar.scss";
+import Logo from "../../assets/images/typeright-logo.svg";
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -37,7 +38,10 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className="navbar">
-                <h1>TypeRight</h1>
+                <Link to="/" className="home-btn">
+                    <img src={Logo} alt="TypeRight Logo"/>
+                    <h1>TypeRight</h1>
+                </Link>
                 { this.getLinks() }
             </div>
         );
