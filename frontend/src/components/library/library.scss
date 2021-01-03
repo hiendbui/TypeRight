@@ -40,7 +40,7 @@
 }
 
 .test-item-preview{
-    background: $accent-three;
+    background: $accent-two;
     margin: 0 24px;
     padding: 12px;
     height: 100%;
@@ -52,11 +52,11 @@
 
 }
 .test-item-container:hover .test-item-preview{
-    background: $accent-two;
+    background: $accent-one;
     top: -12px;
 }
 .test-item-container:focus .test-item-preview{
-    background: $accent-two;
+    background: $accent-one;
 
     top: -24px;
 }

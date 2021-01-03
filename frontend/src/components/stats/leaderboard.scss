@@ -33,7 +33,7 @@
 }
 
 .no-leaderboard {
-    background: $accent-three;
+    background: $accent-one;
 }
 
 .no-leaderboard-td {
@@ -46,7 +46,7 @@ table {
     // box-sizing: border-box;
     max-width: 1200px;
     border-collapse: separate;
-    border: 1px solid $accent-three;
+    border: 1px solid $accent-one;
     border-radius: 10px;
     -moz-border-radius: 10px;
 }
@@ -55,7 +55,8 @@ th {
     vertical-align: middle;
     padding: 10px;
     text-align: left;
-    background: $accent-three;
+    background: $accent-one;
+    font-weight: 600;
 }
 
 th:first-child {
