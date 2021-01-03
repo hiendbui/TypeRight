@@ -39,12 +39,12 @@ export default class UserStats extends React.Component {
                 <div className="user-stats">
                     <ResponsiveContainer width="100%" height={300}>
                         <AreaChart data={data} >
-                            <Area type="monotone" dataKey="y" stroke="#563097c5" fill="#7a44d8" />
-                            <CartesianGrid stroke="#ccc" />
-                            <XAxis dataKey="x" height={40} >
+                            <Area fillOpacity={1} type="monotone" dataKey="y" stroke="#563097c5" fill="#7a44d8" />
+                            <CartesianGrid stroke="#888" />
+                            <XAxis tick={{fill: 'white'}} dataKey="x" height={40} >
                                 <Label value="Test Attempts" stroke="white" offset={0} position="insideBottom" dy={0}/>
                             </XAxis>
-                            <YAxis dataKey="y" >
+                            <YAxis tick={{fill: 'white'}} dataKey="y" >
                                 <Label value="Words Per Minute" angle={-90}  stroke="white" position="insideLeft" dy={70}/>
                             </YAxis>
                         </AreaChart>

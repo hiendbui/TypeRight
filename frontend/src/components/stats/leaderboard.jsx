@@ -5,13 +5,20 @@ class Leaderboard extends React.Component {
     
     componentDidMount() {
         this.props.fetchAllUsers()
-        this.props.fetchTestAttempts(this.props.currentTest)
+            .then(() => this.props.fetchTestAttempts(this.props.currentTest))
+    }
+
+    componentDidUpdate(prevProps) {
+        // debugger
+        if (prevProps.currentTest !== this.props.currentTest) {
+            this.props.fetchTestAttempts(this.props.currentTest)
+        }
     }
 
     checkAttempts(count, attempt) {
 
         if (attempt) {
-            console.log(attempt)
+            // debugger
             return (
                 <tr className="leaderboard-row">
                     <td className="leaderboard-rank">{count}.</td>
@@ -33,9 +40,17 @@ class Leaderboard extends React.Component {
     render() {
         if (this.props.attempts.length === 0) {
             return (
-                <tr className="no-leaderboard">
-                    <td className="no-leaderboard-td">Be the first on the leaderboard!</td>
-                </tr>
+                <div className="leaderboard-table">
+                    <div className="another-class">
+                        <table>
+                            <tbody>
+                                <tr className="no-leaderboard">
+                                    <td className="no-leaderboard-td">Be the first on the leaderboard!</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             )
         }
         let count = 1;

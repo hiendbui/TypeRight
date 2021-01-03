@@ -25,6 +25,7 @@
 }
 
 .cursor {
+    display: none;
     outline: 1px solid orange;
     animation-name: cursor-blink;
     animation-iteration-count: infinite;
@@ -40,7 +41,12 @@
         opacity: 0
     }
 }
-.type-container{
+
+.type-container {
     display: flex;
     flex-wrap: wrap;
+}
+
+.type-container:focus .cursor{
+    display: inline;
 }

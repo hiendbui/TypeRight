@@ -14,7 +14,7 @@ class MainPage extends React.Component {
         {/* <TypeContainer/> */}
         <LibraryContainer/>
         <CreateTest/>
-        <footer>
+        <footer className="footer">
           Created by Anthony Bologna, Hien Bui, Josh Bubar, and Lawrence Nguyen &copy; 2020
         </footer>
       </div>
