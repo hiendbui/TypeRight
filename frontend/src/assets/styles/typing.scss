@@ -25,4 +25,17 @@
 
 .cursor {
     outline: 1px solid orange;
+    animation-name: cursor-blink;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+@keyframes cursor-blink {
+    0%,
+    50% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
 }
