@@ -16,15 +16,14 @@ export default class typing extends Component {
     }
 
     componentDidMount(){
-        this.props.fetchRandomTest()
-            .then(() => this.setState({
-                wordObjs: this.props.test.content.split(' ').map(word => ({
-                    complete: false,
-                    letterObjs: word.split('').map(letter => ({
-                        letter
-                    }))
+        this.setState({
+            wordObjs: this.props.test.content.split(' ').map(word => ({
+                complete: false,
+                letterObjs: word.split('').map(letter => ({
+                    letter
                 }))
-            }));
+            }))
+        });
     }
 
     keySpace(e) {
@@ -223,7 +222,9 @@ export default class typing extends Component {
         if(!this.state.wordObjs) return null;
 
         return (
-            <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabindex="-1" >
+        <div>
+            <h3>{this.props.test.title}</h3>
+            <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabIndex="-1" >
                 {this.state.wordObjs.map( (wordObj, wIdx) => 
                     <span
                         className={!wordObj.complete || wordObj.letterObjs.every(letterObj => letterObj.correct) ? 'word' : 'word error'}
@@ -249,6 +250,7 @@ export default class typing extends Component {
                     </span>
                 )}
             </div>
+        </div>
         )
     }
 }

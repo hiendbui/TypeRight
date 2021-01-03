@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./navbar.scss";
+import Logo from "../../assets/images/typeright-logo.svg";
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -27,8 +28,8 @@ class NavBar extends React.Component {
         } else {
             return (
                 <div className="navRight">
-                    <button className="sessionbutton" id="login" onClick={() => { this.props.clearSessionErrors(); this.props.openModal('Log In'); }}>Log In</button>
-                    <button className="sessionbutton" id="signup" onClick={() => { this.props.clearSessionErrors(); this.props.openModal('Sign Up'); }}>Sign Up</button>
+                    <button className="sessionbutton" id="login" onClick={() => { this.props.clearSessionErrors(); this.props.openSessionModal('Log In'); }}>Log In</button>
+                    <button className="sessionbutton" id="signup" onClick={() => { this.props.clearSessionErrors(); this.props.openSessionModal('Sign Up'); }}>Sign Up</button>
                 </div>
             );
         }
@@ -37,7 +38,10 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className="navbar">
-                <h1>TypeRight</h1>
+                <Link to="/" className="home-btn">
+                    <img src={Logo} alt="TypeRight Logo"/>
+                    <h1>TypeRight</h1>
+                </Link>
                 { this.getLinks() }
             </div>
         );

@@ -1,14 +1,17 @@
-
 import React from 'react';
-import TypeContainer from '../typing/typing_container';
 import LibraryContainer from '../library/library_container';
-import CreateTest from "./create_test"
-class MainPage extends React.Component {
+import CreateTest from "./create_test";
+// import TypingContainer from "../typing/typing_container"
+import "./main_page.scss";
 
+class MainPage extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
     return (
       <div>
-        <TypeContainer/>
+        {/* <TypingContainer/> */}
         <LibraryContainer/>
         <CreateTest/>
         <footer>

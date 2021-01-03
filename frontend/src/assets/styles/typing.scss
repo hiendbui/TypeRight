@@ -1,17 +1,18 @@
+@import "./colors.scss";
 .letter {
     color: gray;
 }
 
 .letter.correct {
-    color: purple;
+    color: $main-text;
 }
 
 .letter.incorrect {
-    color: red;
+    color: lightcoral;
 }
 
 .letter.incorrect.extra {
-    color: blue;
+    color: rgb(222, 53, 53);
 }
 
 .word {
@@ -38,4 +39,8 @@
     100% {
         opacity: 0
     }
+}
+.type-container{
+    display: flex;
+    flex-wrap: wrap;
 }

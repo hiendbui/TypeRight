@@ -1,7 +1,7 @@
 // src/components/nav/navbar_container.js
 
 import { connect } from 'react-redux';
-import { openModal } from '../../actions/modal_actions';
+import { openSessionModal } from '../../actions/modal_actions';
 import {
     logout,
     login,
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   login: user => dispatch(login(user)),
   logout: () => dispatch(logout()),
   clearSessionErrors: () => dispatch(clearSessionErrors()),
-  openModal: modal => dispatch(openModal(modal))
+  openSessionModal: modal => dispatch(openSessionModal(modal))
 })
 export default connect(
   mapStateToProps,

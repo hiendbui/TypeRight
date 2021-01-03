@@ -7,7 +7,7 @@ const validateTestInput = require('../../validation/tests');
 
 router.get('/', (req, res) => {
     Test.find()
-        .sort({ date: -1 })
+        .sort({ updatedAt: -1 })
         .limit(10)
         .then(tests => res.json(tests))
         .catch(err => res.status(404).json({ notestsfound: 'No tests found' }));
