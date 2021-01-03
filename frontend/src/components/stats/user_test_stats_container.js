@@ -8,7 +8,7 @@ const msp = state => ({
     currentTest: state.entities.tests.current,
     attempts: state.entities.attempts,
     tests: state.entities.tests,
-    header: `Your Stats for ${state.entities.tests[state.entities.tests.current].title}`
+    header: `Your Stats for ${state.entities.tests[state.entities.tests.current]?.title}`
 })
 
 const mdp = dispatch => ({

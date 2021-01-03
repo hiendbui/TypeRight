@@ -1,0 +1,21 @@
+@import "../../assets/styles/colors.scss";
+
+.user-stats {
+    // background-color: $second-background;
+    // min-height: 50px;
+    // display: flex;
+    // justify-content: center;
+    // max-width: 1200px;
+    background-color: $second-background;
+    margin: 12px 10%;
+    border-radius: 5px;
+    padding: 24px 48px;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+
+// .user-stats-wrapper {
+//     display: flex;
+//     justify-content: center;
+// }
