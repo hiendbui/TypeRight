@@ -1,6 +1,7 @@
 import React from 'react';
 import LibraryContainer from '../library/library_container';
 import CreateTest from "./create_test";
+// import TypingContainer from "../typing/typing_container"
 import "./main_page.scss";
 
 class MainPage extends React.Component {
@@ -10,6 +11,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
+        {/* <TypingContainer/> */}
         <LibraryContainer/>
         <CreateTest/>
         <footer>
