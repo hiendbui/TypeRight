@@ -24,7 +24,6 @@ export default class typing extends Component {
 
     startTest(){
 
-
         this.setState({
             letterIdx: 0,
             wordIdx: 0,
