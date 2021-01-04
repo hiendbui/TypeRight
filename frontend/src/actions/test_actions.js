@@ -28,14 +28,14 @@ const removeTest = testId => ({
     testId
 });
 
-export const fetchUserTests = (userId) => dispatch => {
-    return TestAPIUtil.fetchUserTests(userId)
-        .then(tests => dispatch(receiveUserTests(tests.data)))
-}
 export const selectTest = testId => ({
     type: SELECT_TEST,
     testId
 })
+export const fetchUserTests = (userId) => dispatch => {
+    return TestAPIUtil.fetchUserTests(userId)
+        .then(tests => dispatch(receiveUserTests(tests.data)))
+}
 
 export const fetchLatestTests = () => dispatch => {
     return TestAPIUtil.fetchLatestTests()
@@ -50,6 +50,7 @@ export const fetchRandomTest = () => dispatch => {
 export const fetchTest = id => dispatch => {
     return TestAPIUtil.fetchTest(id)
         .then(test => dispatch(receiveTest(test.data)))
+        .catch(() => dispatch(receiveTest({title: "This test has been deleted", _id: id})))
 };
 
 export const postTest = test => dispatch => {
@@ -61,7 +62,8 @@ export const postTest = test => dispatch => {
 
 export const deleteTest = id => dispatch => {
     return TestAPIUtil.deleteTest(id)
-        .then(res => dispatch(removeTest(res.data.id)))
+      .then((res) => dispatch(removeTest(res.data.id)))
+      .then(() => dispatch(closeTestFormModal()));
 };
 
 export const updateTest = (id, test) => dispatch => {

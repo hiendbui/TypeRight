@@ -5,7 +5,8 @@ import Library from './library';
 const mapStateToProps = state => ({
    tests: state.entities.tests,
    currentUser: state.session.user.id,
-   header: "Your Library"
+   header: "Your Library",
+   editable: true
 });
 
 const mapDispatchToProps = dispatch => ({

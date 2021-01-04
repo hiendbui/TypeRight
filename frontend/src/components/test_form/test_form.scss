@@ -1,9 +1,19 @@
 @import "../../assets/styles/colors.scss";
 
+.test-form-btn-container{
+    display: flex;
+}
 .submit-btn.test-form-btn{
-    width: 100%;
     box-sizing: border-box;
-
+    flex-grow: 1;
+}
+.submit-btn.trash-btn{
+    width: 20px;
+    min-width: 20px;
+    margin-right: 12px;
+}
+.submit-btn.trash-btn:hover{
+    background: #d94357;
 }
 
 .content textarea{
