@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { AiFillDelete } from "react-icons/ai";
 import "./test_form.scss"
 
 export default class TestForm extends Component {
@@ -52,7 +53,18 @@ export default class TestForm extends Component {
                         />
                     </label>
                 </div>
-                    <button className="test-form-btn submit-btn" type="submit">{this.props.formType}</button>
+                <div className="test-form-btn-container">
+                    {this.props.formType === "Edit Test" ? (
+                        <>
+                        <button className="trash-btn submit-btn">
+                            <AiFillDelete onClick={(e) => {e.preventDefault(); this.props.deleteTest()}} className="trash-icon"/>
+                        </button>
+                        <button className="test-form-btn submit-btn"type="submit">Update Test</button>
+                        </>
+                    ) : (
+                        <button className="test-form-btn submit-btn" type="submit">{this.props.formType}</button>
+                    ) }
+                </div>
             </form>
         </div>
         )
