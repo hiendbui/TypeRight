@@ -1,17 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import LibraryContainer from '../library/library_container';
 import CreateTest from "./create_test";
-// import TypingContainer from "../typing/typing_container"
+import TypingContainer from "../typing/typing_container";
+import { fetchRandomTest } from "../../actions/test_actions";
 import "./main_page.scss";
 
 class MainPage extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {loaded: false}
+  }
+  componentDidMount(){
+    this.props.fetchRandomTest()
+      .then(() => this.setState({loaded: true}))
   }
   render() {
     return (
       <div className="main-wrapper-component">
-        {/* <TypeContainer/> */}
+        {this.state.loaded && <TypingContainer/>}
         <LibraryContainer/>
         <CreateTest/>
         <footer className="footer">
@@ -22,4 +29,12 @@ class MainPage extends React.Component {
   }
 }
 
-export default MainPage;
+const msp = state => ({
+  test: state.entities.tests[state.entities.tests.current]
+});
+
+const mdp = (dispatch) => ({
+  fetchRandomTest: () => dispatch(fetchRandomTest())
+});
+
+export default connect(msp, mdp)(MainPage);
