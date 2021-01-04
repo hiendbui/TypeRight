@@ -1,9 +1,9 @@
 import React from 'react';
-import {AreaChart,  Area, CartesianGrid, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
+import {AreaChart,  Area, CartesianGrid, XAxis, YAxis, Label, ResponsiveContainer, Tooltip} from 'recharts';
 import './user_stats.scss' 
 export default class UserStats extends React.Component {
     componentDidMount() {
-        this.props.fetchAttempts(this.props.currentUser.id, this.props.currentTest)
+        this.props.fetchAttempts(this.props.currentUser?.id, this.props.currentTest)
             .then(() => {
                 for (const attempt in this.props.attempts) {
                      this.props.fetchTest(this.props.attempts[attempt].test)
@@ -11,8 +11,24 @@ export default class UserStats extends React.Component {
             })
     }
 
+    openModal() {
+        this.props.openSessionModal('Sign Up');
+    }
+    
     render() {
-        if (Object.keys(this.props.attempts).length < 3) return (
+        const userAttempts = Object.values(this.props.attempts).filter(attempt => attempt.user === this.props.currentUser?.id)
+        // console.log(Object.values(this.props.attempts))
+        if (!this.props.loggedIn) {
+            return (
+            <div>
+                <h1>{this.props.header}</h1>
+                
+                <div className="user-stats" onClick={() => this.openModal()}>
+                    <h1 className="no-stats no-user">Please create an account to track your progress!</h1>
+                </div>
+            </div>
+            )
+        } else if (userAttempts.length < 3) {return (
             <div>
                 <h1>{this.props.header}</h1>
                 <br/>
@@ -20,17 +36,39 @@ export default class UserStats extends React.Component {
                     <h1 className="no-stats">Stats only show after 3 test attempts</h1>
                 </div>
             </div>
-        )
-        const attemptIds = Object.keys(this.props.attempts)
+        )}
         
         const data = []
-        for (let i = 0; i < attemptIds.length; i++) {
+        for (let i = 0; i < userAttempts.length; i++) {
             data.push({
                 x: i+1,
-                y: this.props.attempts[attemptIds[i]].wpm
+                ...userAttempts[i]
             })
         }
-        
+        const CustomTooltip = ({ active, payload }) => {
+            if (active) {
+                const date = new Date(payload[0].payload.createdAt).toDateString().split(" ");
+                date.shift();
+                let title ="";
+                if (this.props.header === "Your Overall Stats") title = `Test: "${this.props.tests[payload[0].payload.test]?.title}"`
+                
+                // const parsedDate = `${date.getMonth()+1}/${date.split(" ")[2]}/${date.split(" ")[3]}`
+                // console.log(payload)
+                // console.log(label)
+            return (
+                
+            <div className="custom-tooltip">
+                <p className="label">{`WPM: ${payload[0].payload.wpm}`}</p>
+                <p className="label">{`Accuracy: ${Math.ceil(payload[0].payload.accuracy*100)}`}</p>
+                <p className="label">{`Errors: ${payload[0].payload.typos}`}</p>
+                <p className="label">{`Date Taken: ${date.join(" ")}`}</p>
+                <p className="label">{title}</p>
+            </div>
+            );
+            }
+        return null;
+        };
+
         if (!this.props.currentTest) return null;
        
         return(
@@ -39,14 +77,15 @@ export default class UserStats extends React.Component {
                 <div className="user-stats">
                     <ResponsiveContainer width="100%" height={300}>
                         <AreaChart data={data} >
-                            <Area fillOpacity={1} type="monotone" dataKey="y" stroke="#563097c5" fill="#7a44d8" />
+                            <Area fillOpacity={1} type="monotone" dataKey="wpm" stroke="#563097c5" fill="#7a44d8" />
                             <CartesianGrid stroke="#888" />
                             <XAxis tick={{fill: 'white'}} dataKey="x" height={40} >
-                                <Label value="Test Attempts" stroke="white" offset={0} position="insideBottom" dy={0}/>
+                                <Label value="Test Attempts" fill="white" offset={0} position="insideBottom" dy={0}/>
                             </XAxis>
-                            <YAxis tick={{fill: 'white'}} dataKey="y" >
-                                <Label value="Words Per Minute" angle={-90}  stroke="white" position="insideLeft" dy={70}/>
+                            <YAxis tick={{fill: 'white'}} dataKey="wpm" >
+                                <Label value="Words Per Minute" angle={-90}  fill="white" position="insideLeft" dy={70}/>
                             </YAxis>
+                            <Tooltip content={<CustomTooltip/>} />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
