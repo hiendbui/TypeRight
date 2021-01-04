@@ -46,8 +46,12 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    border: 1px solid transparent;
 }
-
+.type-container:focus{
+    outline: none;
+    border: 1px solid $accent-one;
+}
 .type-container:focus .cursor{
     display: inline;
 }
