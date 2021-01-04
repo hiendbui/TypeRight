@@ -5,15 +5,15 @@
 
 ## Features
 * Landing page with newest typing challenges
-<img src="frontend/src/assets/images/landing-page.png?raw=true">
-* Upload your own typing challenges
-<img src="frontend/src/assets/images/create-test.png?raw=true">
-* Delete and Edit challenges that you uploaded
-<img src="frontend/src/assets/images/edit-delete-test.png?raw=true">
-* Profile page with user stats and personal library
-<img src="frontend/src/assets/images/profile.png?raw=true">
+<img src="frontend/src/assets/images/landing-page.png?raw=true" width="700">
 * Take tests and see immediate results and leaderboard/stats
-<img src="frontend/src/assets/images/test-show.png?raw=true">
+<img src="frontend/src/assets/images/test-show.png?raw=true" width="700">
+* Profile page with user stats and personal library
+<img src="frontend/src/assets/images/profile.png?raw=true" width="700">
+* Upload your own typing challenges
+<img src="frontend/src/assets/images/create-test.png?raw=true" width="700">
+* Delete and Edit challenges that you uploaded
+<img src="frontend/src/assets/images/edit-delete-test.png?raw=true" width="700">
 
 ## Tech Specs
 * MongoDB
