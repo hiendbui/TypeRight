@@ -7,6 +7,7 @@ import {withRouter} from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => ({
    test: state.entities.tests[ownProps.match.params.testId],
+   loggedIn: state.session.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({

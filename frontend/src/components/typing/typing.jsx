@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Attempt from '../attempt/attempt';
+import { RiRestartFill } from 'react-icons/ri';
 
 export default class typing extends Component {
     constructor(props){
@@ -13,10 +15,19 @@ export default class typing extends Component {
 
         this.skipCodes = [16, 17, 18, 20, 9, 27, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 44, 46, 33, 34, 35, 36, 37, 38, 39, 40, 224];
         this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.startTest = this.startTest.bind(this);
     }
 
     componentDidMount(){
+        this.startTest();
+    }
+
+    startTest(){
         this.setState({
+            letterIdx: 0,
+            wordIdx: 0,
+            startedAt: null,
+            completedTestData: false,
             wordObjs: this.props.test.content.split(' ').map(word => ({
                 complete: false,
                 letterObjs: word.split('').map(letter => ({
@@ -37,11 +48,12 @@ export default class typing extends Component {
                 wordObjs: newWords,
                 letterIdx: 0,
                 wordIdx: newWordIdx,
+            }, () => { 
+                if (newWordIdx === newWords.length) {
+                    this.finishTest(newWords);
+                }
             })
 
-            if (newWordIdx === newWords.length) {
-                this.finishTest(newWords);
-            }
         }
     }
 
@@ -131,14 +143,15 @@ export default class typing extends Component {
         this.setState({
             letterIdx: newLetterIdx,
             wordObjs: newWords,
+        }, () => { 
+            if (this.state.wordIdx === newWords.length - 1 && 
+                newWords[this.state.wordIdx].letterObjs.length === newLetterIdx &&
+                newWords[this.state.wordIdx].letterObjs.every(letterObj => letterObj.correct)
+            ) {
+                console.log("last word is correct!")
+                this.finishTest(newWords);
+            }
         })
-
-        if (this.state.wordIdx === newWords.length - 1 && 
-            newWords[this.state.wordIdx].letterObjs.length === newLetterIdx &&
-            newWords[this.state.wordIdx].letterObjs.every(letterObj => letterObj.correct)
-        ) {
-            this.finishTest(newWords);
-        }
     }
 
     incorrectLetter(e) {
@@ -157,7 +170,7 @@ export default class typing extends Component {
     }
 
     handleKeyPress(e){
-        if (e.ctrlKey || e.metaKey || e.altKey || this.skipCodes.includes(e.keyCode)) {
+        if (e.ctrlKey || e.metaKey || e.altKey || this.skipCodes.includes(e.keyCode) || Boolean(this.state.completedTestData)) {
 
         } else if ( e.keyCode === 32 ) {
             this.keySpace(e);
@@ -184,8 +197,8 @@ export default class typing extends Component {
 
     finishTest (wordObjs) {
         const totalChars = wordObjs.reduce((acc, wordObj) => 
-            acc + wordObj.letterObjs.length,
-            0
+            acc + wordObj.letterObjs.filter(letterObj => 
+                letterObj.complete).length, 0 
         ) + wordObjs.length -1;
         
         const time = Date.now() - this.state.startedAt;
@@ -208,14 +221,24 @@ export default class typing extends Component {
         const accuracy = (totalChars - typos) / totalChars;
 
         const adjustedWpm = rawWpm * accuracy;
-        
-        this.props.createAttempt({
-            time: time,
-            wpm: adjustedWpm,
-            typos: typos,
-            test: this.props.test._id,
-            accuracy: accuracy
-        });
+       
+        this.setState({completedTestData: {
+                time: time,
+                rawWpm: rawWpm,
+                wpm: adjustedWpm,
+                typos: typos,
+                accuracy: accuracy
+        }})
+
+        if(this.props.loggedIn){
+            this.props.createAttempt({
+                time: time,
+                wpm: adjustedWpm,
+                typos: typos,
+                test: this.props.test._id,
+                accuracy: accuracy
+            });
+        }
     }
 
     render() {
@@ -223,8 +246,9 @@ export default class typing extends Component {
 
         return (
         <div>
-            <h3>{this.props.test.title}</h3>
+            {Boolean(this.state.completedTestData) && <Attempt testData={this.state.completedTestData} />}
             <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabIndex="-1" >
+                <button className="restart-btn" onClick={this.startTest}><RiRestartFill className="restart-icon"/></button>
                 {this.state.wordObjs.map( (wordObj, wIdx) => 
                     <span
                         className={!wordObj.complete || wordObj.letterObjs.every(letterObj => letterObj.correct) ? 'word' : 'word error'}
