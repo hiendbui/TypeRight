@@ -4,8 +4,7 @@ import './leaderboard.scss'
 class Leaderboard extends React.Component {
     
     componentDidMount() {
-        this.props.fetchAllUsers()
-            .then(() => this.props.fetchTestAttempts(this.props.currentTest))
+        this.props.fetchAllUsers(this.props.currentTest)
     }
 
     componentDidUpdate(prevProps) {
