@@ -8,6 +8,7 @@ const msp = state => ({
     currentTest: [],
     attempts: state.entities.attempts,
     tests: state.entities.tests,
+    loggedIn: state.session.isAuthenticated,
     header: 'Your Overall Stats'
 })
 

@@ -1,6 +1,7 @@
+@import "../../assets/styles/colors.scss";
+
 .create-test{
     cursor: pointer;
-    p {
-        text-align: center;
-    }
+    p { text-align: center; };
+    &:hover { color: $accent-one }
 }

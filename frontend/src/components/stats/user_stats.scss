@@ -9,3 +9,15 @@
     display: flex;
     justify-content: center;
 }
+
+.no-user:hover {
+    cursor: pointer;
+    color: $accent-one;
+}
+
+.custom-tooltip {
+    background: $fourth-background;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 13px;
+}

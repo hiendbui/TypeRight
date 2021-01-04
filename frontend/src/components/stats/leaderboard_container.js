@@ -17,7 +17,7 @@ const msp = (state, ownProps) => ({
 const mdp = dispatch => ({
     fetchTestAttempts: testId => dispatch(fetchTestAttempts(testId)),
     fetchTest: id => dispatch(fetchTest(id)),
-    fetchAllUsers: () => dispatch(fetchAllUsers())
+    fetchAllUsers: (currentTest) => dispatch(fetchAllUsers(currentTest))
 })
 
 const LeaderboardContainer = withRouter(connect(msp,mdp)(Leaderboard));
