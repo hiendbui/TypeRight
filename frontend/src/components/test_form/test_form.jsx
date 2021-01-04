@@ -13,6 +13,7 @@ export default class TestForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const test = Object.assign({}, this.state);
+        test.content = test.content.trim();
         this.props.submitForm(test);
     }
 

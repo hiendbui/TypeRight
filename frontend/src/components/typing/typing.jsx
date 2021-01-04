@@ -23,19 +23,20 @@ export default class typing extends Component {
     }
 
     startTest(){
+
         this.setState({
             letterIdx: 0,
             wordIdx: 0,
             startedAt: null,
             completedTestData: false,
-            wordObjs: this.props.test.content.split(' ').map(word => ({
+            wordObjs: this.props.test.content.split(/\s+/).map(word => ({
                 complete: false,
                 letterObjs: word.split('').map(letter => ({
                     letter
                 }))
             }))
-        }, () => this.typeContainer.focus());
-
+        }, () => {this.typeContainer.focus(); console.log(this.state.lineBreaks)});
+    
     }
 
     keySpace(e) {
@@ -173,7 +174,7 @@ export default class typing extends Component {
     handleKeyPress(e){
         if (e.ctrlKey || e.metaKey || e.altKey || this.skipCodes.includes(e.keyCode) || Boolean(this.state.completedTestData)) {
 
-        } else if ( e.keyCode === 32 ) {
+        } else if ( e.keyCode === 32 || e.keyCode === 13 ) {
             this.keySpace(e);
         } else if ( e.keyCode === 8 ) {
             this.keyBackspace(e);
