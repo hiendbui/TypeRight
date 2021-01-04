@@ -3,10 +3,11 @@ import UserStats from './user_stats';
 import { fetchUserTestAttempts } from '../../actions/attempt_actions';
 import { fetchTest } from '../../actions/test_actions';
 import { openSessionModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
 
-const msp = state => ({
+const msp = (state, ownProps) => ({
     currentUser: state.session.user,
-    currentTest: state.entities.tests.current,
+    currentTest: ownProps.match.params.testId,
     attempts: state.entities.attempts,
     tests: state.entities.tests,
     loggedIn: state.session.isAuthenticated,
@@ -19,5 +20,5 @@ const mdp = dispatch => ({
     openSessionModal: modal => dispatch(openSessionModal(modal))
 })
 
-const UserTestStatsContainer = connect(msp,mdp)(UserStats);
+const UserTestStatsContainer = withRouter(connect(msp,mdp)(UserStats));
 export default UserTestStatsContainer;
