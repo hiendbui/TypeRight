@@ -34,7 +34,8 @@ export default class typing extends Component {
                     letter
                 }))
             }))
-        });
+        }, () => this.typeContainer.focus());
+
     }
 
     keySpace(e) {
@@ -247,7 +248,7 @@ export default class typing extends Component {
         return (
         <div>
             {Boolean(this.state.completedTestData) && <Attempt testData={this.state.completedTestData} />}
-            <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabIndex="-1" >
+            <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabIndex="-1" ref={ x => this.typeContainer = x }>
                 <button className="restart-btn" onClick={this.startTest}><RiRestartFill className="restart-icon"/></button>
                 {this.state.wordObjs.map( (wordObj, wIdx) => 
                     <span
