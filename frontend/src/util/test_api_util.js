@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchUserTests = (userId) => {
-    return axios.get(`api/tests/users/${userId}`)
+    return axios.get(`api/tests/user/${userId}`)
 }
 export const fetchLatestTests = () => {
     return axios.get('api/tests')

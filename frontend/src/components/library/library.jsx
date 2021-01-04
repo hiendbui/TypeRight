@@ -7,7 +7,7 @@ export default class Library extends Component {
         super(props)
     }
     componentDidMount(){
-        this.props.fetchTests();
+        this.props.fetchTests(this.props.currentUser);
     }
     // componentDidUpdate(){
     //     this.props.fetchLatestTests();
