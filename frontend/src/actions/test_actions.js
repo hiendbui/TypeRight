@@ -44,7 +44,7 @@ export const fetchLatestTests = () => dispatch => {
 
 export const fetchRandomTest = () => dispatch => {
     return TestAPIUtil.fetchRandomTest()
-        .then(test => dispatch(receiveTest(test.data[0])))
+        .then(test => dispatch(receiveTest(test.data[0]))).then((test)=> console.log("in the fetch random action: ", test))
 };
 
 export const fetchTest = id => dispatch => {

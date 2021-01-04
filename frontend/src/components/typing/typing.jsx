@@ -248,7 +248,15 @@ export default class typing extends Component {
 
         return (
         <div>
-            {Boolean(this.state.completedTestData) && <Attempt testData={this.state.completedTestData} />}
+            {
+                Boolean(this.state.completedTestData) && 
+                <Attempt 
+                    testData={this.state.completedTestData} 
+                    match={this.props.match} 
+                    test={this.props.test}
+                    restartTest={this.startTest}
+                />
+            }
             <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabIndex="-1" ref={ x => this.typeContainer = x }>
                 <button className="restart-btn" onClick={this.startTest}><RiRestartFill className="restart-icon"/></button>
                 {this.state.wordObjs.map( (wordObj, wIdx) => 

@@ -6,7 +6,7 @@ import Typing from './typing';
 import {withRouter} from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => ({
-   test: state.entities.tests[ownProps.match.params.testId],
+   test: state.entities.tests[state.entities.tests.current],
    loggedIn: state.session.isAuthenticated
 });
 
