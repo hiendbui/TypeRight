@@ -11,5 +11,5 @@ const receiveAllUsers = users => ({
 export const fetchAllUsers = (currentTest) => dispatch => {
     return UserAPIUtil.fetchAllUsers()
         .then(users => dispatch(receiveAllUsers(users.data)))
-        .then(() => fetchTestAttempts(currentTest))
+        .then(() => dispatch(fetchTestAttempts(currentTest)))
 };

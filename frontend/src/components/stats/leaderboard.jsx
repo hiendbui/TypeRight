@@ -5,6 +5,7 @@ class Leaderboard extends React.Component {
     
     componentDidMount() {
         this.props.fetchAllUsers(this.props.currentTest)
+            // .then(() => this.props.fetchTestAttempts(this.props.currentTest))
     }
 
     componentDidUpdate(prevProps) {
@@ -21,7 +22,7 @@ class Leaderboard extends React.Component {
             return (
                 <tr className="leaderboard-row">
                     <td className="leaderboard-rank">{count}.</td>
-                    <td className="leaderboard-username">{this.props.users[attempt.user].username}</td>
+                    <td className="leaderboard-username">{this.props.users[attempt.user]?.username}</td>
                     <td className="leaderboard-wpm">{attempt.wpm}</td>
                 </tr>
             )

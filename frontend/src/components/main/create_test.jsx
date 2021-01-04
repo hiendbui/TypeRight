@@ -6,16 +6,17 @@ import { openSessionModal } from '../../actions/modal_actions';
 class CreateTest extends Component {
     constructor(props) {
         super(props)
-
     }
-    openModal(props){
-        console.log(props)
+
+    openModal(props) {
+        
         if(props.loggedIn){
             props.openTestFormModal('Create')
         } else {
             props.openSessionModal('Log In');
         }
     }
+
     render() {
         return (
             <div onClick={() => this.openModal(this.props)} className="page-card create-test">
