@@ -35,7 +35,7 @@ export default class typing extends Component {
                     letter
                 }))
             }))
-        }, () => {this.typeContainer.focus(); console.log(this.state.lineBreaks)});
+        }, () => {this.typeContainer.focus()});
     
     }
 
@@ -150,7 +150,6 @@ export default class typing extends Component {
                 newWords[this.state.wordIdx].letterObjs.length === newLetterIdx &&
                 newWords[this.state.wordIdx].letterObjs.every(letterObj => letterObj.correct)
             ) {
-                console.log("last word is correct!")
                 this.finishTest(newWords);
             }
         })

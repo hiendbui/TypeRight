@@ -7,7 +7,7 @@ import { GrClose } from 'react-icons/gr';
 
 function TestFormModal({ modal, closeTestFormModal, testId}) {
     if (!modal) return null;
-    console.log("in the test form modal:", modal);
+    
     let component;
     switch (modal) {
         case "Create":

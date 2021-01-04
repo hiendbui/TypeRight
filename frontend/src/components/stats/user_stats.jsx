@@ -19,7 +19,6 @@ export default class UserStats extends React.Component {
     
     render() {
         const userAttempts = Object.values(this.props.attempts).filter(attempt => attempt.user === this.props.currentUser?.id)
-        // console.log(Object.values(this.props.attempts))
         if (!this.props.loggedIn) {
             return (
             <div>
@@ -54,9 +53,7 @@ export default class UserStats extends React.Component {
                 let title ="";
                 if (this.props.header === "Your Overall Stats") title = `Test: "${this.props.tests[payload[0].payload.test]?.title}"`
                 
-                // const parsedDate = `${date.getMonth()+1}/${date.split(" ")[2]}/${date.split(" ")[3]}`
-                // console.log(payload)
-                // console.log(label)
+               
             return (
                 
             <div className="custom-tooltip">
