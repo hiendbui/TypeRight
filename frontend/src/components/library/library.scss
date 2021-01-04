@@ -71,13 +71,15 @@
     border-radius: 0 0 10px 10px;
     bottom: 0;
     width: 100%;
-    // -webkit-transition: background-image 0.5s ease;
-    // transition: background-image ease 0.5s;
     -webkit-transition: background-image 0.5s ease-in-out;
-transition: background-image 0.5s ease-in-out;
-
+    transition: background-image 0.5s ease-in-out;
 }
-// .test-item-container:hover .test-item-title{
-    // background: $triadic-1;
-    // background: $fifth-background;
-// }
+.edit-icon{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: gray;
+}
+.edit-icon:hover{
+    color: $main-text;
+}
