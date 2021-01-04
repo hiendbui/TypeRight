@@ -1,8 +1,7 @@
 <center> <h1>TypeRight</h1> </center>
 <!-- ![alt text](app/assets/images/Twitch-logo-reverse.png?raw=true "Switch") -->
 <p align="center"><img ="center" src="frontend/src/assets/images/typeright-logo.svg?raw=true"  width="200" height="200" /></p>
-<a href="https://typerighter.herokuapp.com/">TypeRight</a>
-TypeRight is a platform for users to practice their typing and upload their own texts/articles, which allows users to cultivate a library of texts as they watch their typing speed and accuracy improve. TypeRight has a data dashboard where users can see their improvement over time. 
+<a href="https://typerighter.herokuapp.com/">TypeRight</a> is a platform for users to practice their typing and upload their own texts/articles, which allows users to cultivate a library of texts as they watch their typing speed and accuracy improve. TypeRight has a data dashboard where users can see their improvement over time. 
 
 ## Features
 * Landing page with newest typing challenges
