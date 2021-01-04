@@ -43,28 +43,9 @@
         display: flex;
         justify-content: space-between;
     }
-    .submit-btn {
-        text-decoration: none;
-        font-size: 1rem;
-        padding: 6px 8px;
-        border-radius: 10px;
-        margin: 6px 0;
-        background: $fifth-background;
-
-        // background:  $triadic-2;
-        color: $main-text;
-        text-align: center;
-        width: 40%;
-        min-width: 90px;
-    }
+    
     .demo-user-btn{
          background: $fifth-background;
-    }
-
-    .submit-btn:hover {
-        background: $main-background;
-        color: $main-text;
-        cursor:pointer;
     }
 
     .modalHeader {
@@ -134,4 +115,25 @@
         line-height: 21px;
         font-size: 15px;
     }
+}
+
+.submit-btn {
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 6px 8px;
+    border-radius: 10px;
+    margin: 6px 0;
+    background: $fifth-background;
+
+    // background:  $triadic-2;
+    color: $main-text;
+    text-align: center;
+    width: 40%;
+    min-width: 90px;
+    cursor: pointer;
+}
+.submit-btn:hover {
+    background: $main-background;
+    color: $main-text;
+    cursor:pointer;
 }
