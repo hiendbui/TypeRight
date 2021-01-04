@@ -5,6 +5,7 @@ export default class UserStats extends React.Component {
     componentDidMount() {
         this.props.fetchAttempts(this.props.currentUser?.id, this.props.currentTest)
             .then(() => {
+                if (this.props.header === "Your Overall Stats") 
                 for (const attempt in this.props.attempts) {
                      this.props.fetchTest(this.props.attempts[attempt].test)
                 }
