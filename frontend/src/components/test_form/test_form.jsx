@@ -23,12 +23,25 @@ export default class TestForm extends Component {
         }
     }
 
+    displayErrors() {
+        if (this.props.errors.length === 0) return null;
+        
+        return (
+            <div className="error-msg">
+                {this.props.errors.map((el, idx) => (
+                <div key={idx}>{el}</div>
+                ))}
+            </div>
+        );
+    }
+
     render() {
         return (
       <div className="modal-form">
             <form onSubmit={this.handleSubmit}>
                 <div className="text-input-section">
                     <h3>{this.props.formType}</h3>
+                    {this.displayErrors()}
                     <label className="title">
                         <h4>Title</h4>
                         <input 
