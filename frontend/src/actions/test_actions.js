@@ -82,7 +82,11 @@ export const deleteTest = id => dispatch => {
 };
 
 export const updateTest = (id, test) => dispatch => {
-    return TestAPIUtil.updateTest(id, test)
-      .then((test) => dispatch(receiveTest(test.data)))
-      .then(() => dispatch(closeTestFormModal()));
+    return TestAPIUtil.updateTest(id, test).then(
+      (test) => {
+        dispatch(receiveTest(test.data));
+        dispatch(closeTestFormModal());
+      },
+      (err) => dispatch(receiveTestErrors(err.response.data))
+    );
 };

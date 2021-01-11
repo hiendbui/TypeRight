@@ -99,11 +99,12 @@
 
     }
 
-    .session-errors {
+    .error-msg {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
         margin: 20px 6px 0px 0px;
         padding: 5px;
         border-top: 1px solid lightcoral;
@@ -114,6 +115,9 @@
         color: lightcoral;
         line-height: 21px;
         font-size: 15px;
+        & > * {
+            margin: 3px 0;
+        }
     }
 }
 

@@ -7,7 +7,7 @@ const msp = state => ({
             title: "",
             content: ""
     },
-    errors:
+    errors: state.errors.test,
     formType: "Create Test"
 })
 

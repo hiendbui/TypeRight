@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import TestForm from "./test_form";
 import { updateTest, deleteTest } from '../../actions/test_actions';
-// import { closeTestFormModal } from '../../actions/modal_actions';
 
 const msp = (state) => ({
   test: state.entities.tests[state.entities.tests.current],
-  formType: 'Edit Test',
+  errors: state.errors.test,
+  formType: "Edit Test",
 });
 
 const mdp = (dispatch, ownProps) => ({
