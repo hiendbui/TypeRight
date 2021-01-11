@@ -10,7 +10,7 @@ router.post('/',
         
         const newAttempt = new Attempt({
             time: req.body.time,
-            wpm: parseInt(req.body.wpm),
+            wpm: parseInt(Math.ceil(req.body.wpm)),
             typos: req.body.typos,
             user: req.user.id,
             test: req.body.test,

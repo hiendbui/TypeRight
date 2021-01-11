@@ -3,8 +3,7 @@ import { fetchUserTests } from '../../actions/test_actions'
 import Library from './library';
 
 const mapStateToProps = state => ({
-   tests: state.entities.tests,
-   currentUser: state.session.user.id,
+   tests: Object.values(state.entities.tests).filter(t => t.uploader === state.session.user.id).sort((a,b) => (a.updatedAt < b.updatedAt) ? 1: -1),
    header: "Your Library",
    editable: true
 });
