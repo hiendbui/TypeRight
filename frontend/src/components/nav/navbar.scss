@@ -1,4 +1,5 @@
 @import "../../assets/styles/colors.scss";
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -11,11 +12,7 @@
     padding: 0 24px;
     box-sizing: border-box;
     z-index: 2;
-    h1{
-        margin-right: auto;
-        font-size: 19px;
-        color: white;
-    }
+
     .navRight > * {
         padding-right: 24px;
         cursor: pointer;
@@ -24,14 +21,37 @@
     .navRight > *:hover {
         color: $accent-one;
     }
-}
-.home-btn{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    img{
-        height: 30px;
-        width: auto;
-        margin-right: 8px;
+    .navleft {
+        display: flex;
+        align-items: center;
+        
+        h1{
+            // margin-right: auto;
+            font-size: 19px;
+            color: white;
+        }
+
+        .home-btn{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            cursor: pointer;
+
+            img{
+                height: 30px;
+                width: auto;
+                margin-right: 8px;
+            }
+        }
+
+        .pipe-sep {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .about-link > *:hover {
+            cursor: pointer;
+            color: $accent-one;
+        }
     }
 }

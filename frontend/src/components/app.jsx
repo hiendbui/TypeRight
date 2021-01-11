@@ -5,7 +5,8 @@ import NavBarContainer from './nav/navbar_container';
 import SessionModal from "./session/session_modal";
 import TestFormModal from "./test_form/test_form_modal";
 import Profile from './profile/profile';
-import Test from "./test/test_container"
+import Test from "./test/test_container";
+import About from "./about/about";
 
 import MainPage from './main/main_page';
 
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/tests/:testId" component={Test} />
         <Route exact path="/" component={MainPage} />
         <Route path="/tests/:testId" component={Test} />
+        <Route exact path="/about" component={About} />
         <Redirect to="/"/>
       </Switch>
     </div>
