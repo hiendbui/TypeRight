@@ -23,6 +23,18 @@ export default class TestForm extends Component {
         }
     }
 
+    // displayErrors() {
+    //     if (this.props.errors.length === 0) return null;
+        
+    //     return (
+    //         <div className="session-errors">
+    //             {this.props.errors.map((el, idx) => (
+    //             <div key={idx}>{el}</div>
+    //             ))}
+    //         </div>
+    //     );
+    // }
+
     render() {
         return (
       <div className="modal-form">
