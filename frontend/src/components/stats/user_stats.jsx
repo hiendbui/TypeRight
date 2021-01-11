@@ -29,15 +29,26 @@ export default class UserStats extends React.Component {
                 </div>
             </div>
             )
-        } else if (userAttempts.length < 3) {return (
-            <div>
-                <h1>{this.props.header}</h1>
-                <br/>
-                <div className="user-stats">
-                    <h1 className="no-stats">Stats only show after 3 test attempts</h1>
+        } else if (userAttempts.length === 0) {
+            return (
+                <div>
+                    <h1>{this.props.header}</h1>
+                    <br/>
+                    <div className="user-stats">
+                        <h1 className="no-stats">Stats only appear after 3 test attempts</h1>
+                    </div>
                 </div>
-            </div>
-        )}
+                )
+        } else if (userAttempts.length < 3) {
+            return (
+                <div>
+                    <h1>{this.props.header}</h1>
+                    <br/>
+                    <div className="user-stats">
+                        <h1 className="no-stats">Stats will appear after {3 - userAttempts.length} more attempt{(userAttempts.length < 2) ? 's' : ''}</h1>
+                    </div>
+                </div>
+        )};
         
         const data = []
         for (let i = 0; i < userAttempts.length; i++) {
