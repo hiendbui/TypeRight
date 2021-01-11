@@ -3,7 +3,7 @@ import { fetchLatestTests } from '../../actions/test_actions'
 import Library from './library';
 
 const mapStateToProps = state => ({
-   tests: state.entities.tests,
+   tests: (Object.values(state.entities.tests)).filter(t => t.content).sort((a,b) => (a.updatedAt < b.updatedAt) ? 1: -1).slice(0,12),
    header: "Explore Our Latest Test Submissions",
    editable: false
 });
