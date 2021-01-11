@@ -14,7 +14,6 @@ export default class Library extends Component {
 
     // }
     render() {
-        console.log('tests: ', this.props.tests);
         if (!this.props.tests || Object.values(this.props.tests).filter(ele => (ele.uploader === this.props.currentUser)).length === 0) return null;
 
         return (
