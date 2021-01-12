@@ -8,7 +8,7 @@
 <img src="frontend/src/assets/images/landing-page.png?raw=true" width="700">
 
 * Take tests and see immediate results and leaderboard/stats
-<img src="frontend/src/assets/images/test-show.png?raw=true" width="700">
+<img src="frontend/src/assets/images/typing-gif.gif?raw=true" width="700">
 
 * Profile page with user stats and personal library
 <img src="frontend/src/assets/images/profile.png?raw=true" width="700">
