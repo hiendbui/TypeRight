@@ -5,3 +5,14 @@
     p { text-align: center; };
     &:hover { color: $accent-one }
 }
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer:hover{
+    cursor: pointer;
+    color: $accent-one;
+}

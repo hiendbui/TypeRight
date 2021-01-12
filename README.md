@@ -20,6 +20,45 @@
 <img src="frontend/src/assets/images/edit-delete-test.png?raw=true" width="700">
 
 ## Code
+* For the typing test component, we wanted to style specific letters and words with css by dynamically assigning classes. To accomplish this, using the string from the test content, we create arrays of word objects containing arrays of their letter objects when we load the test.
+
+```javascript
+// typing.jsx
+loadTest(){
+    this.setState({ 
+        letterIdx: 0,
+        wordIdx: 0,
+        startedAt: null,
+        completedTestData: false,
+        wordObjs: this.props.test.content.split(/\s+/).map(word => ({
+            complete: false,
+            letterObjs: word.split('').map(letter => ({
+                letter
+            }))
+        }))}, () => {this.typeContainer.focus()}
+    );
+}
+```
+
+* When we map through these arrays, we assign classes to the letters and words based on other keys in the objects.
+
+```javascript
+// typing.jsx
+letterClass (letterObj) {
+    if (letterObj.complete) {
+        if (letterObj.extra) {
+            return 'letter incorrect extra';
+        } else if (letterObj.correct) {
+            return 'letter correct';
+        } else {
+            return 'letter incorrect';
+        }
+    } else {
+        return 'letter';
+    }
+}
+```
+
 * For displaying stats via the leaderboard and graphs, test attempts needed to be fetched according to the user and/or test they belong to. In order to filter
 tests attempts in such a way, multiple GET requests were written with express router.
 <img src="frontend/src/assets/images/backend_snippet.png?raw=true" width="700">
