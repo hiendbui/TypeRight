@@ -61,10 +61,42 @@ letterClass (letterObj) {
 
 * For displaying stats via the leaderboard and graphs, test attempts needed to be fetched according to the user and/or test they belong to. In order to filter
 tests attempts in such a way, multiple GET requests were written with express router.
-<img src="frontend/src/assets/images/backend_snippet.png?raw=true" width="700">
+```javascript
+// attempts.js
+router.get('/users/:user', (req, res) => {
+    Attempt.find({ user : req.params.user })
+    .then(attempts => {
+        const newObj = {}
+        attempts.forEach((attempt) => newObj[attempt.id] = attempt)
+        return res.json(newObj)
+    })
+        .catch(err => res.status(404).json({ usernotfound: 'No such user' }));
+})
+router.get('/tests/:test', (req, res) => {
+    Attempt.find({ test : req.params.test })
+    .sort({ wpm: -1 })
+    .limit(5)
+    .then(attempts => {
+        const newObj = {}
+        attempts.forEach((attempt) => newObj[attempt.id] = attempt)
+        return res.json(newObj)
+    })
+    .catch(err => res.status(404).json({ testnotfound: 'No such test' }));
+})
+router.get('/:user/:test', (req, res) => {
+    Attempt.find( { $and: [ { user : req.params.user }, { test : req.params.test } ]})
+        .then(attempts => {
+        const newObj = {}
+        attempts.forEach((attempt) => newObj[attempt.id] = attempt)
+        return res.json(newObj)
+    })
+        .catch(err => res.status(404).json({ errs: 'No such user or test' }));
+})
+```
 
 * Recharts was used to construct graphs displaying a user's words per minute over time, as well as other information, such as accuracy and errors, through a customized tooltip.
 ```javascript
+// user_stats.jsx
 return(
    <div className="user-stats-wrapper">
         <h1>{this.props.header}</h1>
@@ -106,6 +138,7 @@ return(
 ```
 
 ```javascript
+// user_stats.jsx
 const CustomTooltip = ({ active, payload }) => {
     if (active) {
         const date = new Date(payload[0].payload.createdAt).toDateString().split(" ");
@@ -117,7 +150,9 @@ const CustomTooltip = ({ active, payload }) => {
         return (
             <div className="custom-tooltip">
                 <p className="label">{`WPM: ${payload[0].payload.wpm}`}</p>
-                <p className="label">{`Accuracy: ${Math.ceil(payload[0].payload.accuracy*100)}`}</p>
+                <p className="label">
+                    {`Accuracy: ${Math.ceil(payload[0].payload.accuracy*100)}`}
+                </p>
                 <p className="label">{`Errors: ${payload[0].payload.typos}`}</p>
                 <p className="label">{`Date Taken: ${date.join(" ")}`}</p>
                 <p className="label">{title}</p>
