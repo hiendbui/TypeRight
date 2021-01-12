@@ -15,12 +15,19 @@
 * Delete and Edit challenges that you uploaded
 <img src="frontend/src/assets/images/edit-delete-test.png?raw=true" width="700">
 
-## Tech Specs
+## Code
+* For displaying stats via the leaderboard and graphs, test attempts needed to be fetched according to the user and/or test they belong to. In order to filter
+tests attempts in such a way, multiple GET requests were written with express router.
+<img src="frontend/src/assets/images/backend_snippet.png?raw=true" width="700">
+
+* Recharts was used to construct graphs displaying a user's words per minute over time, as well as other information such as accuracy through a customized tooltip.
+<img src="frontend/src/assets/images/recharts-snippet.png?raw=true" width="700">
+<img src="frontend/src/assets/images/tooltip-snippet.png?raw=true" width="700">
+## Technologies
 * MongoDB
 * Express
 * React, Redux
 * Node
 * Webpack
-
 ## Todo
 * Add social features, allowing users to friend one another

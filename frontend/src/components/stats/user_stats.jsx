@@ -57,6 +57,7 @@ export default class UserStats extends React.Component {
                 ...userAttempts[i]
             })
         }
+        
         const CustomTooltip = ({ active, payload }) => {
             if (active) {
                 const date = new Date(payload[0].payload.createdAt).toDateString().split(" ");
