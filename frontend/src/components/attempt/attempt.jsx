@@ -56,6 +56,12 @@ class Attempt extends Component {
                     <div className="button-container">
                         <button onClick={this.goToRandom} className="submit-btn">Random test</button>
                         <button onClick={this.props.restartTest} className="submit-btn">Retake this test</button>
+                        {
+                            this.props.match.path === "/" ?
+                                <button className="submit-btn">
+                                    <Link to={`/tests/${this.state.id}`}>View test stats</Link>
+                                </button> : null
+                        }
                     </div>
                 </div>
             </div>

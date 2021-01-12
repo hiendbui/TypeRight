@@ -39,4 +39,8 @@
     display: flex;
     justify-content: space-around;
     width: 100%;
+    .submit-btn {
+       width: auto;
+       padding: 6px 6%;
+    }
 }
