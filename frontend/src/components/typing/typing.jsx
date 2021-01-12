@@ -15,14 +15,14 @@ export default class typing extends Component {
 
         this.skipCodes = [16, 17, 18, 20, 9, 27, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 44, 46, 33, 34, 35, 36, 37, 38, 39, 40, 224];
         this.handleKeyPress = this.handleKeyPress.bind(this);
-        this.startTest = this.startTest.bind(this);
+        this.loadTest = this.loadTest.bind(this);
     }
 
     componentDidMount(){
-        this.startTest();
+        this.loadTest();
     }
 
-    startTest(){
+    loadTest(){
 
         this.setState({
             letterIdx: 0,
@@ -253,11 +253,11 @@ export default class typing extends Component {
                     testData={this.state.completedTestData} 
                     match={this.props.match} 
                     test={this.props.test}
-                    restartTest={this.startTest}
+                    restartTest={this.loadTest}
                 />
             }
             <div className="type-container page-card" onKeyDown={this.handleKeyPress} tabIndex="-1" ref={ x => this.typeContainer = x }>
-                <button className="restart-btn" onClick={this.startTest}><RiRestartFill className="restart-icon"/></button>
+                <button className="restart-btn" onClick={this.loadTest}><RiRestartFill className="restart-icon"/></button>
                 {this.state.wordObjs.map( (wordObj, wIdx) => 
                     <span
                         className={!wordObj.complete || wordObj.letterObjs.every(letterObj => letterObj.correct) ? 'word' : 'word error'}
