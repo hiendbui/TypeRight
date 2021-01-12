@@ -24,7 +24,7 @@
 tests attempts in such a way, multiple GET requests were written with express router.
 <img src="frontend/src/assets/images/backend_snippet.png?raw=true" width="700">
 
-* Recharts was used to construct graphs displaying a user's words per minute over time, as well as other information such as accuracy through a customized tooltip.
+* Recharts was used to construct graphs displaying a user's words per minute over time, as well as other information, such as accuracy and errors, through a customized tooltip.
 <img src="frontend/src/assets/images/recharts-snippet.png?raw=true" width="700">
 <img src="frontend/src/assets/images/tooltip-snippet.png?raw=true" width="700">
 
