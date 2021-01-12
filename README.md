@@ -64,8 +64,69 @@ tests attempts in such a way, multiple GET requests were written with express ro
 <img src="frontend/src/assets/images/backend_snippet.png?raw=true" width="700">
 
 * Recharts was used to construct graphs displaying a user's words per minute over time, as well as other information, such as accuracy and errors, through a customized tooltip.
-<img src="frontend/src/assets/images/recharts-snippet.png?raw=true" width="700">
-<img src="frontend/src/assets/images/tooltip-snippet.png?raw=true" width="700">
+```javascript
+return(
+   <div className="user-stats-wrapper">
+        <h1>{this.props.header}</h1>
+        <div className="user-stats">
+            <ResponsiveContainer width="100%" height={300}>
+                <AreaChart data={data} >
+                    <Area 
+                        fillOpacity={1} 
+                        type="monotone" 
+                        dataKey="wpm" 
+                        stroke="#563097c5" 
+                        fill="#7a44d8" 
+                    />
+                    <CartesianGrid stroke="#888" />
+                    <XAxis tick={{fill: 'white'}} dataKey="x" height={40} >
+                        <Label 
+                            value="Test Attempts" 
+                            fill="white" 
+                            offset={0} 
+                            position="insideBottom" 
+                            dy={0}
+                        />
+                    </XAxis>
+                    <YAxis tick={{fill: 'white'}} dataKey="wpm" >
+                        <Label 
+                            value="Words Per Minute" 
+                            angle={-90}  
+                            fill="white" 
+                            position="insideLeft" 
+                            dy={70}
+                        />
+                    </YAxis>
+                    <Tooltip content={<CustomTooltip/>} />
+                </AreaChart>
+            </ResponsiveContainer>
+        </div>
+    </div>
+)
+```
+
+```javascript
+const CustomTooltip = ({ active, payload }) => {
+    if (active) {
+        const date = new Date(payload[0].payload.createdAt).toDateString().split(" ");
+        date.shift();
+        let title ="";
+        if (this.props.header === "Your Overall Stats"){
+            title = `Test: "${this.props.tests[payload[0].payload.test]?.title}"`
+        }
+        return (
+            <div className="custom-tooltip">
+                <p className="label">{`WPM: ${payload[0].payload.wpm}`}</p>
+                <p className="label">{`Accuracy: ${Math.ceil(payload[0].payload.accuracy*100)}`}</p>
+                <p className="label">{`Errors: ${payload[0].payload.typos}`}</p>
+                <p className="label">{`Date Taken: ${date.join(" ")}`}</p>
+                <p className="label">{title}</p>
+            </div>
+        );
+    }
+    return null;
+};
+```
 
 ## Technologies
 * MongoDB
