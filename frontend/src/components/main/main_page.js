@@ -5,7 +5,6 @@ import CreateTest from "./create_test";
 import TypingContainer from "../typing/typing_container";
 import { fetchRandomTest } from "../../actions/test_actions";
 import { closeWelcomeText } from "../../actions/ui_actions";
-import { Link } from 'react-router-dom';
 import WelcomeText from './welcome-text';
 import "./main_page.scss";
 
@@ -25,11 +24,6 @@ class MainPage extends React.Component {
         {this.state.loaded && <TypingContainer/>}
         <LibraryContainer/>
         <CreateTest/>
-        <footer>
-          <Link to="/about">
-            <span className="footer">Created by Anthony Bologna, Hien Bui, Josh Bubar, and Lawrence Nguyen &copy; 2020</span>
-          </Link>
-        </footer>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
 import SessionModal from "./session/session_modal";
 import TestFormModal from "./test_form/test_form_modal";
@@ -25,6 +25,11 @@ const App = () => (
         <Redirect to="/"/>
       </Switch>
     </div>
+    <footer>
+          <Link to="/about">
+            <span className="footer">Created by Anthony Bologna, Hien Bui, Josh Bubar, and Lawrence Nguyen &copy; 2020</span>
+          </Link>
+    </footer>
   </div>
 );
 
