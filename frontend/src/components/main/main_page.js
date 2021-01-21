@@ -4,7 +4,9 @@ import LibraryContainer from '../library/library_container';
 import CreateTest from "./create_test";
 import TypingContainer from "../typing/typing_container";
 import { fetchRandomTest } from "../../actions/test_actions";
+import { closeWelcomeText } from "../../actions/ui_actions";
 import { Link } from 'react-router-dom';
+import WelcomeText from './welcome-text';
 import "./main_page.scss";
 
 class MainPage extends React.Component {
@@ -19,6 +21,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div className="main-wrapper-component">
+        <WelcomeText show={this.props.showWelcome} close={this.props.closeWelcomeText}/>
         {this.state.loaded && <TypingContainer/>}
         <LibraryContainer/>
         <CreateTest/>
@@ -33,11 +36,13 @@ class MainPage extends React.Component {
 }
 
 const msp = state => ({
-  test: state.entities.tests[state.entities.tests.current]
+  test: state.entities.tests[state.entities.tests.current],
+  showWelcome: state.ui.welcome && !state.session.isAuthenticated
 });
 
 const mdp = (dispatch) => ({
-  fetchRandomTest: () => dispatch(fetchRandomTest())
+  fetchRandomTest: () => dispatch(fetchRandomTest()),
+  closeWelcomeText: () => dispatch(closeWelcomeText()),
 });
 
 export default connect(msp, mdp)(MainPage);

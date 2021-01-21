@@ -45,3 +45,18 @@ a{
     all: unset;
     color: $main-text;
 }
+.welcome-text {
+    text-align: center;
+    line-height: 24px;
+    position: relative;
+    h4{ 
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+}
+.close.welcome{
+    top: 10px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+}

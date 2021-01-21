@@ -22,7 +22,7 @@ function TestFormModal({ modal, closeTestFormModal, testId}) {
     return (
         <div className="modal-background" onClick={closeTestFormModal}>
             <div className="modal-child" onClick={(e) => e.stopPropagation()}>
-                <GrClose className="close-modal" onClick={closeTestFormModal} color="white" size={20}/>
+                <GrClose className="close" onClick={closeTestFormModal} color="white" size={20}/>
                 {component}
             </div>
         </div>

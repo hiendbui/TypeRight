@@ -31,12 +31,12 @@
     background: $fifth-background
 }
 
-.close-modal{
+.close{
     position: absolute;
     right: 24px;
     top: 24px;
     cursor: pointer;
 }
-.close-modal *{
+.close *{
     stroke: $main-text;
 }
