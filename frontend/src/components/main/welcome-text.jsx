@@ -12,7 +12,7 @@ export default function WelcomeText({show, close}) {
             { show && 
                 <div className="page-card welcome-text">
                     <h4>Welcome to TypeRight!</h4>
-                    <p>Start typing below, and improve your typing speed and accuracy.</p>
+                    <p>Start typing below, and improve your typing speed and accuracy. <br/>Sign in or create an account to track your WPM and create your own typing tests.</p>
                     <GrClose className="close welcome" onClick={closeWelcome} color="white" size={20}/>
                 </div>
             }
