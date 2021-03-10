@@ -52,7 +52,7 @@ function About() {
                 <div className="links-container">
                     <a href="https://github.com/jbubar/" target="_blank" rel="noreferrer"><img src={GitHubLogo} width="50" height="50" alt=''/></a>
                     <a href="https://www.linkedin.com/in/joshua-bubar-25331a118/" target="_blank" rel="noreferrer"><img src={LinkedLogo} width="50" height="50" alt=''/></a>
-                    <a href="https://angel.co/u/josh-bubar-2/" target="_blank" rel="noreferrer"><img src={AngelLogo} width="50" height="50" alt=''/></a>
+                    <a href="https://angel.co/u/jbubar/" target="_blank" rel="noreferrer"><img src={AngelLogo} width="50" height="50" alt=''/></a>
                 </div>
             </div>
         </div>
